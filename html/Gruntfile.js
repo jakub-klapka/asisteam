@@ -114,6 +114,9 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
+			options: {
+				interrupt: true
+			},
 			css: {
 				files: ['css/*.scss'],
 				tasks: ['css_all_files']

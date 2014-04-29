@@ -1,0 +1,47 @@
+@import "global";
+
+@mixin typography() {
+
+	@include rhythm-init( 13px, 1.4, 'golden section' );
+	color: $text_color;
+
+	p {
+		margin-bottom: rhythm(1);
+	}
+
+	h1 {
+		font-family: 'PT Sans', 'sans-serif';
+		color: $heading_grey;
+		font-weight: bold;
+		@include rhythm-text(30px, 1);
+		margin-bottom: rhythm(2);
+	}
+
+	h2 {
+		@include rhythm-text(17px, 1);
+		margin-bottom: rhythm(1);
+	}
+
+	h3,h4,h5,h6 {
+		@include rhythm-text(14px, 1);
+		margin-bottom: rhythm(1);
+	}
+
+	ul, ol {
+		margin-bottom: rhythm(1);
+	}
+
+	a {
+		color: $light_blue;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&:visited {
+			color: $main_blue;
+		}
+
+	}
+
+}

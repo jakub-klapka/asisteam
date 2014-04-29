@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "global";
 
 @import "normalize";
@@ -154,11 +155,10 @@ body {
 			margin-right: 0;
 		}
 
-		&:hover {
+		&:hover,
+		&.active {
 			background-color: $main_green;
 		}
-
-
 
 		//Icons
 		$types: 'briefcase', 'chart', 'whiteboard', 'flag';
@@ -174,5 +174,235 @@ body {
 	.no-flexbox & {
 		opacity: 0;
 		//will be pollyfiled
+	}
+}
+
+.banner {
+	//on generic page, there is nothing
+	height: 26px;
+	background: $banner_grey;
+	margin-bottom: $featured_nav_margin;
+}
+
+.main_content_wrap {
+	width: $page_wrap_width;
+	margin: 0 auto 30px auto;
+
+	&::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.main_content {
+	width: $main_content_width;
+	float: left;
+	background: #FFF;
+	padding: 25px;
+
+	@import "typography";
+	@include typography();
+}
+
+/*
+Vertical rhythm test
+/
+body {
+	position: relative;
+}
+
+body:after {
+	position: absolute;
+	width: auto;
+	height: auto;
+	z-index: 9999;
+	content: '';
+	display: block;
+	pointer-events: none;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url(http://basehold.it/image.php?height=30) repeat top left;
+	background-size: 4px 18.2px;
+	background-position: 0 16.5px;
+}
+
+body:active:after {
+	display: none;
+}
+/*
+//////////
+*/
+
+.calculator {
+	float: right;
+	width: ( $page_wrap_width - $main_content_width - $featured_nav_margin );
+	background: #FFF;
+	padding: 17px;
+
+	form {
+		color: $light_blue;
+		font-size: 13px;
+		display: block;
+
+		.select {
+			display: block;
+
+			.style_wrap {
+				overflow:hidden; /* this hides the select's drop button */
+				padding:0;
+				margin: 5px 0 15px 0;
+				border: solid 1px $form_select_border;
+				background: $form_select_bg;
+				position: relative;
+
+				&::before {
+					//separator
+					content: '';
+					position: absolute;
+					right: 30px;
+					top: 5px;
+					bottom: 5px;
+					border-left: 1px solid $form_select_border;
+				}
+
+				&::after {
+					//triangle
+					content: '';
+					width: 0px;
+					height: 0px;
+					border-style: solid;
+					border-width: 6.9px 4px 0 4px;
+					border-color: darken($form_select_border, 50%) transparent transparent transparent;
+					position: absolute;
+					top: 50%;
+					margin-top: -3px;
+					right: 12px;
+				}
+
+			}
+
+			select {
+				width:115% /* this percentage effectively extends the drop down button out of view */;
+				background-color:transparent /* this hides the select's background making any styling visible from the div */;
+				background-image:none;
+				-webkit-appearance: none /* this is required for Webkit browsers */;
+				border:none;
+				box-shadow:none;
+
+				font-size: 14px;
+				color: $form_select_color;
+				font-weight: bold;
+				padding: 5px 0 5px 5px;
+				border-radius: 0;
+			}
+		}
+
+		%boxes {
+			font-family: 'PT Sans', 'sans-serif';
+			font-size: 12px;
+			margin-bottom: 10px;
+
+			.box {
+				background: $banner_grey;
+				padding: 5px;
+				margin-top: 5px;
+				height: 60px;
+
+				strong {
+					display: block;
+				}
+			}
+		}
+
+		.splatka {
+			@extend %boxes;
+			width: 55%;
+			float: left;
+
+			.box {
+				color: $main_green;
+				font-size: 13px;
+				text-align: center;
+
+				strong {
+					font-size: 25px;
+				}
+			}
+		}
+
+		.rpsn {
+			@extend %boxes;
+			width: 40%;
+			float: right;
+
+			.box {
+				color: #a3a3a3;
+				font-size: 17px;
+				font-weight: bold;
+				padding-left: 8px;
+				padding-top: 8px;
+			}
+		}
+
+		.checkbox {
+			clear: both;
+			display: block;
+			font-size: 10px;
+			font-family: 'PT Sans', 'sans-serif';
+			margin-bottom: 20px;
+
+			span {
+				text-decoration: underline;
+				display: inline-block;
+				vertical-align: middle;
+			}
+
+			input {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+
+		.submit {
+			display: block;
+			height: 35px;
+			width: 100%;
+			border: none;
+			background-image: linear-gradient(to bottom, #c7e5ff 0px, #3792de 4px, #379cf2 32px, #3188d0 35px );
+			color: #FFF;
+			font-weight: bold;
+			font-family: 'PT Sans', 'sans-serif';
+			text-shadow: 1px 1px 5px rgba( 0, 0, 0, 0.7 );
+			font-size: 18px;
+		}
+
+	}
+}
+
+.main_footer {
+	height: $footer_height;
+	background: $footer_bg;
+	line-height: $footer_height;
+	color: #FFF;
+	font-size: 12px;
+
+	.inner {
+		width: $page_wrap_width;
+		margin: 0 auto;
+	}
+
+	.authors {
+		float: right;
+	}
+
+	a {
+		color: #01eaff;
+
+		&:hover {
+			text-decoration: none;
+		}
 	}
 }

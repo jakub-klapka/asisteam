@@ -1,4 +1,5 @@
-@charset "UTF-8";
+
+@import "rhythm";
 
 /*
 Colors
@@ -7,6 +8,13 @@ $body_background: #f8f9f6;
 $main_blue: #286fa2;
 $light_blue: #058dd3;
 $main_green: #12b417;
+$banner_grey: #e9e9e9;
+$heading_grey: #adb7c3;
+$text_color: #12446d;
+$form_select_color: #7d7c7c;
+$form_select_bg: #f5f4f4;
+$form_select_border: #e4e3e3;
+$footer_bg: #058dd3;
 
 /*
 Layout
@@ -15,3 +23,5 @@ $transition_timeout: 300ms;
 $page_wrap_width: 907px;
 $featured_nav_height: 86px;
 $featured_nav_margin: 13px;
+$main_content_width: 637px;
+$footer_height: 70px;
