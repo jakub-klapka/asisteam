@@ -1,0 +1,173 @@
+@import "global";
+
+@import "normalize";
+
+@import "icons/icons-layout";
+
+//My reset:
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: inline-block;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+/*
+Main typo
+*/
+body {
+	background: $body_background;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+/*
+Layout
+*/
+body {
+	border-top: 7px solid $main_blue;
+}
+
+.main_header {
+	width: $page_wrap_width;
+	margin: 0 auto;
+}
+
+.main_nav {
+	$image_height: 34px;
+	height: 85px;
+	display: block;
+	position: relative;
+
+	.logo {
+		display: block;
+		position: absolute;
+		top: 50%;
+		margin-top: -$image_height/2;
+		left: 3px;
+
+		img {
+			display: block;
+		}
+	}
+
+	ul {
+		display: block;
+		height: $image_height;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		margin-top: -$image_height/2;
+
+		li {
+			height: $image_height;
+			line-height: $image_height;
+			margin-left: 30px;
+
+			&:first-of-type {
+				margin-left: 0;
+			}
+
+			a {
+				display: block;
+				height: 100%;
+				padding: 0 10px;
+				position: relative;
+
+				text-decoration: none;
+				color: $main_blue;
+				font-size: 15px;
+				font-weight: bold;
+				font-family: 'PT Sans', 'sans-serif';
+
+				&:before {
+					//active box indicator
+					$box_size: 7px;
+					content: '';
+					position: absolute;
+					right: 100%;
+					top: 50%;
+					margin-top: -$box_size/2;
+					width: $box_size;
+					height: $box_size;
+					background: $main_green;
+					opacity: 0;
+					transition: opacity $transition_timeout;
+				}
+
+				&:hover:before {
+					opacity: 1;
+				}
+			}
+
+			&.active a:before {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.featured_nav {
+	height: 86px;
+	margin-bottom: 13px;
+	display: flex;
+
+	a {
+		display: flex;
+		flex: 1;
+		margin-right: 13px;
+		justify-content: center;
+		flex-flow: column;
+
+		padding-left: 65px;
+		padding-right: 5px;
+
+		//background-image, bg-repead will be extended
+		background-color: $light_blue;
+		background-size: 37px 37px;
+		background-position: 15px center;
+		transition: background-color $transition_timeout;
+
+		color: $body_background;
+		text-decoration: none;
+		font-family: 'PT Sans', 'sans-serif';
+		font-size: 12px;
+
+		strong {
+			display: block;
+			font-size: 16px;
+			margin-bottom: 5px;
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&:hover {
+			background-color: $main_green;
+		}
+
+
+
+		//Icons
+		$types: 'briefcase', 'chart', 'whiteboard', 'flag';
+
+		@each $type in $types {
+			&.#{$type} {
+				@extend .icon-#{$type};
+			}
+		}
+
+	}
+}
