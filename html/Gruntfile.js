@@ -76,6 +76,14 @@ module.exports = function(grunt) {
 			layout: {
 				src: 'build/js/layout.js',
 				dest: 'build/js/layout.js'
+			},
+			root_files: {
+				files: [{
+					expand: true,
+					cwd: 'js',
+					src: '*.js',
+					dest: 'build/js'
+				}]
 			}
 		},
 		grunticon: {
@@ -151,6 +159,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('css', ['sass:one_file', 'autoprefixer:one_file']);
 	grunt.registerTask('all_images', ['imagemin:all_files', 'copy:all_notsupported_images']);
 	grunt.registerTask('js_layout', ['concat:layout', 'closureCompiler:layout']);
+	grunt.registerTask('js_root_files', ['closureCompiler:root_files']);
 	grunt.registerTask('icon_layout', ['svgmin:layout_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_layout', 'clean:temp']);
 
 
@@ -159,7 +168,8 @@ module.exports = function(grunt) {
 		'icon_layout', //have to run before css, as it will be included in css
 		'css_all_files',
 		'all_images',
-		//'js_layout',
+		'js_root_files',
+		'js_layout',
 	]);
 	grunt.registerTask('dev', ['concurrent:dev']);
 

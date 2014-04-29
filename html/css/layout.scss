@@ -119,14 +119,14 @@ body {
 }
 
 .featured_nav {
-	height: 86px;
+	height: $featured_nav_height;
 	margin-bottom: 13px;
 	display: flex;
 
 	a {
 		display: flex;
 		flex: 1;
-		margin-right: 13px;
+		margin-right: $featured_nav_margin;
 		justify-content: center;
 		flex-flow: column;
 
@@ -169,5 +169,10 @@ body {
 			}
 		}
 
+	}
+
+	.no-flexbox & {
+		opacity: 0;
+		//will be pollyfiled
 	}
 }

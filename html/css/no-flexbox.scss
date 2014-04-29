@@ -1,0 +1,24 @@
+@import "global";
+
+.no-flexbox {
+
+	.featured_nav {
+		opacity: 1;
+		height: $featured_nav_height;
+		display: table;
+
+		a {
+			display: table-cell;
+			width: ( $page_wrap_width ) / 4;
+			//float: left;
+			height: $featured_nav_height;
+			vertical-align: middle;
+			border-right: $featured_nav_margin solid $body_background;
+
+			&:last-of-type {
+				border-right: none;
+			}
+		}
+	}
+
+}
