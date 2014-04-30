@@ -1,0 +1,124 @@
+@import "global";
+
+.banner {
+	height: $home_slider_height;
+	margin-bottom: 59px + 30px;
+
+	.inner {
+		width: $page_wrap_width;
+		margin: 0 auto;
+	}
+}
+
+.home_slider {
+	width: $home_slider_width;
+	height: $home_slider_height;
+	float: left;
+	overflow: hidden;
+	position: relative;
+
+	.wrapper {
+		width: 9999px;
+	}
+
+	.image_placeholder {
+		display: none;
+	}
+
+	.slider_item {
+		float: left;
+		width: $home_slider_width;
+		height: $home_slider_height;
+
+		.caption {
+			height: 100%;
+			width: $home_slider_width - $home_slider_image_width;
+			float: left;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			h1,h2,h3 {
+				font-family: 'PT Sans', 'sans-serif';
+				color: #143d57;
+				font-size: 40px;
+				font-weight: bold;
+				margin: 0 0 10px 0;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0;
+				padding-left: 30px;
+
+				li {
+					font-family: 'PT Sans', 'sans-serif';
+					font-size: 17px;
+					line-height: 28px;
+					color: #115787;
+					position: relative;
+
+
+					&::before {
+						$size: 10px;
+						content: '';
+						position: absolute;
+						left: -($size+8px);
+						top: 50%;
+						margin-top: -$size/2;
+						width: $size;
+						height: $size;
+						background: $main_green;
+					}
+				}
+			}
+		}
+
+		img {
+			display: block;
+			float: left;
+			width: $home_slider_image_width;
+			height: $home_slider_height;
+		}
+	}
+
+	.controls {
+		position: absolute;
+		right: 10px;
+		bottom: 10px;
+		font-size: 0;
+		z-index: 200;
+		opacity: 0;
+		transition: opacity $transition_timeout;
+
+		button {
+			display: inline-block;
+			$size: 8px;
+			width: $size;
+			height: $size;
+			background: lighten($light_blue, 40%);
+			border-radius: 50%;
+			margin-left: 5px;
+			padding: 0;
+			border: none;
+			transition: background-color 300ms;
+
+			&:focus,
+			&:active {
+				outline: none;
+			}
+
+			&.active {
+				background-color: $light_blue;
+			}
+		}
+	}
+
+	&:hover .controls {
+		opacity: 1;
+	}
+}
+
+.banner .calculator {
+	margin-top: 12px;
+}

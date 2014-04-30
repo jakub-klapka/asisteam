@@ -58,6 +58,10 @@ module.exports = function(grunt) {
 			layout: {
 				src: ['js/layout/*.js'],
 				dest: 'build/js/layout.js'
+			},
+			home: {
+				src: ['js/home/*.js'],
+				dest: 'build/js/home.js'
 			}
 
 		},
@@ -68,6 +72,10 @@ module.exports = function(grunt) {
 			layout: {
 				src: 'build/js/layout.js',
 				dest: 'build/js/layout.js'
+			},
+			home: {
+				src: 'build/js/home.js',
+				dest: 'build/js/home.js'
 			},
 			root_files: {
 				files: [{
@@ -145,6 +153,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('css_all_files', ['sass:all_files', 'autoprefixer:all_files']);
 	grunt.registerTask('all_images', ['imagemin:all_files', 'copy:all_notsupported_images']);
 	grunt.registerTask('js_layout', ['concat:layout', 'closureCompiler:layout']);
+	grunt.registerTask('js_home', ['concat:home', 'closureCompiler:home']);
 	grunt.registerTask('js_root_files', ['closureCompiler:root_files']);
 	grunt.registerTask('icon_layout', ['svgmin:layout_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_layout', 'clean:temp']);
 
@@ -156,6 +165,7 @@ module.exports = function(grunt) {
 		'all_images',
 		'js_root_files',
 		'js_layout',
+		'js_home',
 	]);
 	grunt.registerTask('dev', ['concurrent:dev']);
 

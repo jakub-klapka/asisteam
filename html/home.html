@@ -8,6 +8,8 @@
 
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'><!-- http://www.google.com/fonts#UsePlace:use/Collection:PT+Sans:400,700 -->
 	<link rel="stylesheet" href="build/css/layout.css"/>
+	<link rel="stylesheet" href="build/css/home.css"/>
+
 </head>
 <body>
 
@@ -46,7 +48,87 @@
 
 </header>
 
-<div class="banner"></div>
+<div class="banner">
+	<div class="inner">
+
+		<section class="home_slider" id="lumi_slider">
+			<div class="wrapper" aria-live="polite">
+				<div class="slider_item">
+					<div class="caption">
+						<h2>Jaký je postup?</h2>
+						<ul>
+							<li>Spočítáte si orientační splátku v kalkulátoru</li>
+							<li>Vyplníte základní údaje o Vás v online formuláři</li>
+							<li>Dostanete nabídku a máte schválený úvěr</li>
+						</ul>
+					</div>
+					<img src="sample_content/slider_1.jpg" alt="" />
+				</div>
+				<div class="slider_item">
+					<div class="caption">
+						<h2>Jaký je postup?</h2>
+						<ul>
+							<li>Spočítáte si orientační splátku v kalkulátoru</li>
+							<li>Vyplníte základní údaje o Vás v online formuláři</li>
+							<li>Dostanete nabídku a máte schválený úvěr</li>
+						</ul>
+					</div>
+					<span class="image_placeholder" data-src="sample_content/slider_1.jpg" data-alt="" hidden="hidden" aria-hidden="true"></span>
+				</div>
+
+			</div>
+			<div class="controls" aria-controls="lumi_slider">
+				<button class="active">1. sekce</button>
+				<button>2. sekce</button>
+			</div>
+		</section>
+
+		<section class="calculator">
+			<form action="">
+				<label class="select">
+					Výše úvěru:
+					<div class="style_wrap">
+						<select name="vyse_uveru">
+							<option value="100000">100.000 Kč</option>
+							<option value="200000">200.000 Kč</option>
+							<option value="300000">300.000 Kč</option>
+						</select>
+					</div>
+				</label>
+				<label class="select">
+					Výše platby v měsících:
+					<div class="style_wrap">
+						<select name="vyse_platby_v_mesicich">
+							<option value="1">1 měsíc</option>
+							<option value="2">2 měsíce</option>
+							<option value="3">3 měsíce</option>
+						</select>
+					</div>
+				</label>
+				<div class="splatka">
+					<strong>Splátka:</strong>
+					<div class="box">
+						<strong>3 541 Kč</strong>
+						úrok 13.99% p.a.
+					</div>
+				</div>
+				<div class="rpsn">
+					RPSN
+					<div class="box">
+						96 měsíců<br>
+						8 let
+					</div>
+				</div>
+				<div class="checkbox">
+					<input type="checkbox" id="checkbox"/>
+					<label for="checkbox">Souhlasím s platebními podmínkami</label>
+				</div>
+				<button type="submit" class="submit">Požádat o úvěr</button>
+			</form>
+		</section>
+
+	</div>
+</div>
 
 <div class="main_content_wrap">
 	<article class="main_content" role="main">
@@ -88,49 +170,7 @@
 
 	</article>
 
-	<section class="calculator">
-		<form action="">
-			<label class="select">
-				Výše úvěru:
-				<div class="style_wrap">
-					<select name="vyse_uveru">
-						<option value="100000">100.000 Kč</option>
-						<option value="200000">200.000 Kč</option>
-						<option value="300000">300.000 Kč</option>
-					</select>
-				</div>
-			</label>
-			<label class="select">
-				Výše platby v měsících:
-				<div class="style_wrap">
-					<select name="vyse_platby_v_mesicich">
-						<option value="1">1 měsíc</option>
-						<option value="2">2 měsíce</option>
-						<option value="3">3 měsíce</option>
-					</select>
-				</div>
-			</label>
-			<div class="splatka">
-				<strong>Splátka:</strong>
-				<div class="box">
-					<strong>3 541 Kč</strong>
-					úrok 13.99% p.a.
-				</div>
-			</div>
-			<div class="rpsn">
-				RPSN
-				<div class="box">
-					96 měsíců<br>
-					8 let
-				</div>
-			</div>
-			<div class="checkbox">
-				<input type="checkbox" id="checkbox"/>
-				<label for="checkbox">Souhlasím s platebními podmínkami</label>
-			</div>
-			<button type="submit" class="submit">Požádat o úvěr</button>
-		</form>
-	</section>
+
 </div>
 
 <footer class="main_footer">
@@ -145,5 +185,7 @@
 <script type="text/javascript" src="js/layout/01_jquery-2.1.0.js"></script>
 <script type="text/javascript" src="js/layout/02_polyfill_init.js"></script>
 <script type="text/javascript" src="js/layout/03_calculator.js"></script>
+<script type="text/javascript" src="js/home/00_jquery.transit.js"></script>
+<script type="text/javascript" src="js/home/01_lumi_slider.js"></script>
 </body>
 </html>

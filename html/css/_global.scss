@@ -26,3 +26,8 @@ $featured_nav_height: 86px;
 $featured_nav_margin: 13px;
 $main_content_width: 637px;
 $footer_height: 70px;
+$calculator_width: ( $page_wrap_width - $main_content_width - $featured_nav_margin );
+
+$home_slider_width: $page_wrap_width - $calculator_width;
+$home_slider_height: 264px;
+$home_slider_image_width: 251px;

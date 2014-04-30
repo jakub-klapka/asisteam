@@ -238,7 +238,7 @@ body:active:after {
 
 .calculator {
 	float: right;
-	width: ( $page_wrap_width - $main_content_width - $featured_nav_margin );
+	width: $calculator_width;
 	background: #FFF;
 	padding: 17px;
 
