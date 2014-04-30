@@ -7,6 +7,33 @@
 	.inner {
 		width: $page_wrap_width;
 		margin: 0 auto;
+		position: relative;
+
+		&::after {
+			content: '';
+			clear: both;
+			display: table;
+		}
+	}
+
+	.teaser {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: $home_slider_width - $featured_nav_margin;
+		background: $main_green;
+		font-size: 17px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #FFF;
+		font-family: 'PT Sans', 'sans-serif';
+		padding: 10px;
+		text-align: center;
+
+		mark {
+			background: none;
+			color: #f1ff10;
+		}
 	}
 }
 
@@ -121,4 +148,9 @@
 
 .banner .calculator {
 	margin-top: 12px;
+}
+
+.main_content {
+	float: none;
+	width: $page_wrap_width;
 }
