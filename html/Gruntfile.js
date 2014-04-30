@@ -15,10 +15,6 @@ module.exports = function(grunt) {
 					dest: 'build/css',
 					ext: '.css'
 				}]
-			},
-			one_file: {
-				src: 'css/' + grunt.option('filename') + '.scss',
-				dest: 'build/css/' + grunt.option('filename') + '.css'
 			}
 		},
 		autoprefixer: {
@@ -29,10 +25,6 @@ module.exports = function(grunt) {
 					src: '*.css',
 					dest: 'build/css'
 				}]
-			},
-			one_file: {
-				src: 'build/css/' + grunt.option('filename') + '.css',
-				dest: 'build/css/' + grunt.option('filename') + '.css'
 			}
 		},
 		imagemin: {
@@ -126,21 +118,13 @@ module.exports = function(grunt) {
 					livereload: true
 				},
 				files: ['build/**/*.{css,js,jpg,jpeg,png,gif}']
-			},
-			images: {
-				files: ['images/*.*'],
-				tasks: ['all_images']
-			},
-			icons_layout: {
-				files: ['icons/layout/*.*'],
-				tasks: ['icon_layout']
 			}
 		},
 		concurrent: {
 			options: {
-				//logConcurrentOutput: true
+				logConcurrentOutput: true
 			},
-			dev: ['watch:css', 'watch:livereload', 'watch:images', 'watch:icons_layout']
+			dev: ['watch:css', 'watch:livereload']
 		}
 	});
 
@@ -159,7 +143,6 @@ module.exports = function(grunt) {
 
 	//helpers
 	grunt.registerTask('css_all_files', ['sass:all_files', 'autoprefixer:all_files']);
-	grunt.registerTask('css', ['sass:one_file', 'autoprefixer:one_file']);
 	grunt.registerTask('all_images', ['imagemin:all_files', 'copy:all_notsupported_images']);
 	grunt.registerTask('js_layout', ['concat:layout', 'closureCompiler:layout']);
 	grunt.registerTask('js_root_files', ['closureCompiler:root_files']);
