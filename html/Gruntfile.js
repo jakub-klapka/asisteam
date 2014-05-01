@@ -133,6 +133,20 @@ module.exports = function(grunt) {
 				logConcurrentOutput: true
 			},
 			dev: ['watch:css', 'watch:livereload']
+		},
+		assemble: {
+			dist: {
+				options: {
+					layout: "default.hbs",
+					layoutdir: 'layouts'
+				},
+				files: [{
+					expand: true,
+					cwd: 'pages',
+					src: '**/*.{md,hbs}',
+					dest: 'build'
+				}]
+			}
 		}
 	});
 
@@ -148,6 +162,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-concurrent');
+	grunt.loadNpmTasks('assemble' );
+	grunt.loadNpmTasks('grunt-newer');
 
 	//helpers
 	grunt.registerTask('css_all_files', ['sass:all_files', 'autoprefixer:all_files']);
@@ -166,6 +182,7 @@ module.exports = function(grunt) {
 		'js_root_files',
 		'js_layout',
 		'js_home',
+		'assemble'
 	]);
 	grunt.registerTask('dev', ['concurrent:dev']);
 
