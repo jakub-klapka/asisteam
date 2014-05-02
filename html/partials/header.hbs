@@ -21,9 +21,9 @@
 		<ul>
 			{{#withSort pages 'data.menu_position'}}
 				{{#unless data.featured_menu}}
-					{{#isnt basename 'index'}}
+					{{#unless data.no_menu}}
 						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{basename}}.html">{{data.title}}</a></li>
-					{{/isnt}}
+					{{/unless}}
 				{{/unless}}
 			{{/withSort}}
 		</ul>

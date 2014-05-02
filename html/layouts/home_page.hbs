@@ -1,43 +1,37 @@
 {{>header}}
-
 <div class="banner">
 	<div class="inner">
-
-		<section class="home_slider" id="lumi_slider">
-			<div class="wrapper" aria-live="polite">
-				<div class="slider_item">
-					<div class="caption">
-						<h2>Jaký je postup?</h2>
-						<ul>
-							<li>Spočítáte si orientační splátku v kalkulátoru</li>
-							<li>Vyplníte základní údaje o Vás v online formuláři</li>
-							<li>Dostanete nabídku a máte schválený úvěr</li>
-						</ul>
-					</div>
-					<img src="sample_content/slider_1.jpg" alt="" />
+		{{#if slider}}
+			<section class="home_slider" id="lumi_slider">
+				<div class="wrapper" aria-live="polite">
+					{{#each slider}}
+						<div class="slider_item">
+							<div class="caption">
+								<h2>{{title}}</h2>
+								<ul>
+									{{#each items}}
+										<li>{{this}}</li>
+									{{/each}}
+								</ul>
+							</div>
+							{{#is @index 0}}<img src="images/{{image}}" alt="{{title}}" />{{/is}}
+							{{#isnt @index 0}}<span class="image_placeholder" data-src="images/{{image}}" data-alt="{{title}}" hidden="hidden" aria-hidden="true"></span>{{/isnt}}
+						</div>
+					{{/each}}
 				</div>
-				<div class="slider_item">
-					<div class="caption">
-						<h2>Jaký je postup?</h2>
-						<ul>
-							<li>Spočítáte si orientační splátku v kalkulátoru</li>
-							<li>Vyplníte základní údaje o Vás v online formuláři</li>
-							<li>Dostanete nabídku a máte schválený úvěr</li>
-						</ul>
-					</div>
-					<span class="image_placeholder" data-src="sample_content/slider_1.jpg" data-alt="" hidden="hidden" aria-hidden="true"></span>
+				<div class="controls" aria-controls="lumi_slider">
+					{{#each slider}}
+						<button{{#is @index 0}} class="active"{{/is}}>{{index}}. sekce</button>
+					{{/each}}
 				</div>
-
-			</div>
-			<div class="controls" aria-controls="lumi_slider">
-				<button class="active">1. sekce</button>
-				<button>2. sekce</button>
-			</div>
-		</section>
+			</section>
+		{{/if}}
 
 		{{>calculator}}
 
-		<div class="teaser"><mark>Garantujeme</mark> expresní schválení a poskytnutí úvěru už <mark>do 10 dnů</mark></div>
+		{{#if teaser}}
+			<div class="teaser">{{{teaser}}}</div>
+		{{/if}}
 
 	</div>
 </div>
