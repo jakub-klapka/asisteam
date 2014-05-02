@@ -44,4 +44,31 @@
 
 	}
 
+	table {
+		width: 100%;
+		border: 1px solid $light_blue;
+
+		th {
+			background: $light_blue;
+			color: #FFF;
+		}
+
+		td {
+			padding: 1px 5px;
+			border: 1px solid $light_blue;
+		}
+
+		.number {
+			text-align: right;
+		}
+
+		.no-right-border {
+			border-right: none;
+		}
+
+		.no-right-border + td {
+			border-left: none;
+		}
+	}
+
 }
