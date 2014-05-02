@@ -20,7 +20,7 @@
 		//Terms popup
 		$('.calculator .open_terms').on('click', function(evt){
 			evt.preventDefault();
-			window.open($(this).attr('href'),'title', 'width=800, height=700');
+			window.open($(this).attr('href'),'title', 'width=800, height=700,scrollbars=1,menubar=no,status=no,toolbar=no');
 		});
 
 	});

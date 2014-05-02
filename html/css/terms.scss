@@ -1,0 +1,10 @@
+@import "global";
+
+body {
+	background: $body_background;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 13px;
+
+	@import "typography";
+	@include typography();
+}
