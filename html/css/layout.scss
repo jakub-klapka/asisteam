@@ -403,9 +403,7 @@ body:active:after {
 					transition: opacity $transition_timeout;
 				}
 
-				&:hover {
-					text-decoration: underline;
-				}
+
 			}
 
 			input:checked + label:after {
@@ -429,6 +427,18 @@ body:active:after {
 			font-family: 'PT Sans', 'sans-serif';
 			text-shadow: 1px 1px 5px rgba( 0, 0, 0, 0.7 );
 			font-size: 18px;
+		}
+
+		.open_terms {
+			$icon_size: 11px;
+			@extend .icon-popup;
+			background-size: $icon_size $icon_size;
+			display: inline-block;
+			width: $icon_size;
+			height: $icon_size;
+			font-size: 0;
+			vertical-align: middle;
+			margin-left: 5px;
 		}
 
 	}

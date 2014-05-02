@@ -17,6 +17,12 @@
 
 		});
 
+		//Terms popup
+		$('.calculator .open_terms').on('click', function(evt){
+			evt.preventDefault();
+			window.open($(this).attr('href'),'title', 'width=800, height=700');
+		});
+
 	});
 
 })(jQuery);

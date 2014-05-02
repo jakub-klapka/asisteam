@@ -119,26 +119,31 @@ module.exports = function(grunt) {
 			},
 			css: {
 				files: ['css/*.scss'],
-				tasks: ['css_all_files']
+				tasks: ['css_livereload']
+			},
+			assemble: {
+				files: ['layouts/*.*', 'pages/*.*', 'partials/*.*'],
+				tasks: 'newer:assemble'
 			},
 			livereload: {
 				options: {
 					livereload: true
 				},
-				files: ['build/**/*.{css,js,jpg,jpeg,png,gif}']
+				files: ['build/**/*.{css,js,jpg,jpeg,png,gif,html}', '*.html', 'js/*.js']
 			}
 		},
 		concurrent: {
 			options: {
 				logConcurrentOutput: true
 			},
-			dev: ['watch:css', 'watch:livereload']
+			dev: ['watch:css', 'watch:livereload', 'watch:assemble']
 		},
 		assemble: {
 			dist: {
 				options: {
 					layout: "default.hbs",
-					layoutdir: 'layouts'
+					layoutdir: 'layouts',
+					partials: 'partials/*.{hbs,md}'
 				},
 				files: [{
 					expand: true,
@@ -167,6 +172,7 @@ module.exports = function(grunt) {
 
 	//helpers
 	grunt.registerTask('css_all_files', ['sass:all_files', 'autoprefixer:all_files']);
+	grunt.registerTask('css_livereload', ['newer:sass:all_files', 'newer:autoprefixer:all_files']);
 	grunt.registerTask('all_images', ['imagemin:all_files', 'copy:all_notsupported_images']);
 	grunt.registerTask('js_layout', ['concat:layout', 'closureCompiler:layout']);
 	grunt.registerTask('js_home', ['concat:home', 'closureCompiler:home']);
@@ -187,3 +193,18 @@ module.exports = function(grunt) {
 	grunt.registerTask('dev', ['concurrent:dev']);
 
 };
+
+module.exports.register = function (Handlebars, options)  {
+	Handlebars.registerHelper("debug", function(optionalValue) {
+		console.log("Current Context");
+		console.log("====================");
+		console.log(this);
+
+		if (optionalValue) {
+			console.log("Value");
+			console.log("====================");
+			console.log(optionalValue);
+		}
+	});
+};
+
