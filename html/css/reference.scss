@@ -1,0 +1,36 @@
+@import "global";
+
+@import "icons/icons-reference";
+
+.reference {
+
+	.item {
+		position: relative;
+		border-bottom: 1px solid $banner_grey;
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+	}
+
+	.original {
+		position: absolute;
+		bottom: rhythm(1);
+		right: 0;
+
+		&::before {
+			$size: 13px;
+			content: '';
+			@extend .icon-pdf;
+			background-size: $size $size;
+			position: absolute;
+			display: block;
+			width: $size;
+			height: $size;
+			left: -($size + 3px);
+			top: 50%;
+			margin-top: -($size/2);
+		}
+	}
+
+}

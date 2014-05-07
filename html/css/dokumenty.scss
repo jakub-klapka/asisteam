@@ -1,0 +1,32 @@
+@import "global";
+
+@import "icons/icons-reference";
+
+.dokumenty {
+
+	.dokumenty_list {
+
+		list-style: none;
+
+		li {
+			position: relative;
+			margin-bottom: rhythm(1);
+
+			&::before {
+				$size: 14px;
+				content: '';
+				@extend .icon-pdf;
+				display: block;
+				width: $size;
+				height: $size;
+				position: absolute;
+				left: -($size + 5px);
+				top: 50%;
+				margin-top: -($size/2);
+				background-size: $size $size;
+			}
+		}
+
+	}
+
+}

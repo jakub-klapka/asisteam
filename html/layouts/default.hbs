@@ -3,7 +3,7 @@
 <div class="banner"></div>
 
 <div class="main_content_wrap">
-	<article class="main_content" role="main">
+	<article class="main_content{{#if 'data.main_content_class'}} {{main_content_class}}{{/if}}" role="main">
 
 		{{>body}}
 

@@ -33,7 +33,7 @@ $rhythm: null !global;
 
 	$rhythm: $rhythm-base-line-height !global;
 
-	@include rhythm-normalize;
+	//@include rhythm-normalize;
 }
 
 // resizes a font and adjusts a line-height
@@ -160,3 +160,5 @@ $rhythm-current-font-size-ratio: null !global;
 
 	@return $-result;
 }
+
+@include rhythm-init( 13px, 1.4, 'golden section' );

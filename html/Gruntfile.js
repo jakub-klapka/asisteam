@@ -50,6 +50,11 @@ module.exports = function(grunt) {
 				src: 'temp/icons.data.svg.css',
 				dest: 'css/icons/_icons-layout.scss'
 			},
+			icon_reference: {
+				src: 'temp/icons.data.svg.css',
+				dest: 'css/icons/_icons-reference.scss'
+			},
+
 			includes: {
 				files: [{
 					expand: true,
@@ -124,7 +129,16 @@ module.exports = function(grunt) {
 					src: ['*.svg'],
 					dest: 'temp/to_process'
 				}]
-			}
+			},
+			reference_icons: {
+				files: [{
+					expand: true,
+					cwd: 'icons/reference',
+					src: ['*.svg'],
+					dest: 'temp/to_process'
+				}]
+			},
+
 		},
 		clean: {
 			temp: {
@@ -169,7 +183,7 @@ module.exports = function(grunt) {
 					layout: "default.hbs",
 					layoutdir: 'layouts',
 					partials: 'partials/*.{hbs,md}',
-					data: 'data.yml'
+					data: 'data.yml',
 				},
 				files: [{
 					expand: true,
@@ -213,6 +227,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('js_email_decode', ['concat:email_decode', 'closureCompiler:email_decode']);
 	grunt.registerTask('js_root_files', ['closureCompiler:root_files']);
 	grunt.registerTask('icon_layout', ['svgmin:layout_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_layout', 'clean:temp']);
+	grunt.registerTask('icon_reference', ['svgmin:reference_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_reference', 'clean:temp']);
 
 
 	// Default task(s).

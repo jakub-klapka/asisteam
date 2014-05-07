@@ -2,7 +2,7 @@
 
 @mixin typography() {
 
-	@include rhythm-init( 13px, 1.4, 'golden section' );
+	@include rhythm-normalize();
 	color: $text_color;
 
 	p {
