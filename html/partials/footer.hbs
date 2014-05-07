@@ -5,11 +5,12 @@
 	</div>
 </footer>
 <script type="text/javascript">
-	var LumiPolyfill = { 'theme_path': '' };
+	var LumiPolyfill = { 'theme_path': '{{abspath}}/' };
+	var Calculator = { 'handler_url': '{{abspath}}/calculator.php' };
 </script>
-<script type="text/javascript" src="js/layout.js"></script>
+<script type="text/javascript" src="{{abspath}}/js/layout.js"></script>
 {{#each footer_scripts}}
-	<script type="text/javascript" src="js/{{this}}"></script>
+	<script type="text/javascript" src="{{../abspath}}/js/{{this}}"></script>
 {{/each}}
 </body>
 </html>

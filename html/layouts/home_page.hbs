@@ -14,8 +14,8 @@
 									{{/each}}
 								</ul>
 							</div>
-							{{#is @index 0}}<img src="images/{{image}}" alt="{{title}}" />{{/is}}
-							{{#isnt @index 0}}<span class="image_placeholder" data-src="images/{{image}}" data-alt="{{title}}" hidden="hidden" aria-hidden="true"></span>{{/isnt}}
+							{{#is @index 0}}<img src="{{../../../abspath}}/images/{{image}}" alt="{{title}}" />{{/is}}
+							{{#isnt @index 0}}<span class="image_placeholder" data-src="{{../../../abspath}}/images/{{image}}" data-alt="{{title}}" hidden="hidden" aria-hidden="true"></span>{{/isnt}}
 						</div>
 					{{/each}}
 				</div>

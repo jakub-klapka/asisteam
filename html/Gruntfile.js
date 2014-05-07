@@ -209,7 +209,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [
 		'icon_layout', //have to run before css, as it will be included in css
 		'css_all_files',
-		'all_images',
+		//'all_images',
 		'js_root_files',
 		'js_layout',
 		'js_home',
