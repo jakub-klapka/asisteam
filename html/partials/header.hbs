@@ -4,31 +4,31 @@
 	<meta charset="UTF-8">
 	<title>AsisTeam{{#if title}} | {{title}}{{/if}}</title>
 
-	<script type="text/javascript" src="js/modernizr.js"></script>
+	<script type="text/javascript" src="{{abspath}}/js/modernizr.js"></script>
 
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/layout.css"/>
+	<link rel="stylesheet" href="{{abspath}}/css/layout.css"/>
 	{{#each styles}}
-		<link rel="stylesheet" href="css/{{this}}"/>
+		<link rel="stylesheet" href="{{../abspath}}/css/{{this}}"/>
 	{{/each}}
 
-	<link rel="shortcut icon" href="images/favicons/favicon.ico">
-	<link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-touch-icon-152x152.png">
-	<link rel="icon" type="image/png" href="images/favicons/favicon-196x196.png" sizes="196x196">
-	<link rel="icon" type="image/png" href="images/favicons/favicon-160x160.png" sizes="160x160">
-	<link rel="icon" type="image/png" href="images/favicons/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="images/favicons/favicon-16x16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="images/favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="shortcut icon" href="{{abspath}}/images/favicons/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="{{abspath}}/images/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="{{abspath}}/images/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{abspath}}/images/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="{{abspath}}/images/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="{{abspath}}/images/favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="{{abspath}}/images/favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="{{abspath}}/images/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="{{abspath}}/images/favicons/apple-touch-icon-152x152.png">
+	<link rel="icon" type="image/png" href="{{abspath}}/images/favicons/favicon-196x196.png" sizes="196x196">
+	<link rel="icon" type="image/png" href="{{abspath}}/images/favicons/favicon-160x160.png" sizes="160x160">
+	<link rel="icon" type="image/png" href="{{abspath}}/images/favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="{{abspath}}/images/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="{{abspath}}/images/favicons/favicon-32x32.png" sizes="32x32">
 	<meta name="msapplication-TileColor" content="#2b5797">
-	<meta name="msapplication-TileImage" content="images/favicons/mstile-144x144.png">
-	<meta name="msapplication-config" content="images/favicons/browserconfig.xml">
+	<meta name="msapplication-TileImage" content="{{abspath}}/images/favicons/mstile-144x144.png">
+	<meta name="msapplication-config" content="{{abspath}}/browserconfig.xml">
 
 </head>
 <body>
@@ -41,7 +41,7 @@
 			{{#withSort pages 'data.menu_position'}}
 				{{#unless data.featured_menu}}
 					{{#unless data.no_menu}}
-						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{basename}}.html">{{data.title}}</a></li>
+						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../../abspath}}/{{basename}}.html">{{data.title}}</a></li>
 					{{/unless}}
 				{{/unless}}
 			{{/withSort}}
@@ -51,7 +51,7 @@
 	<nav class="featured_nav" role="navigation">
 		{{#withSort pages 'data.menu_position'}}
 			{{#if data.featured_menu}}
-				<a href="{{basename}}.html" class="{{data.icon}}{{#if isCurrentPage}} active{{/if}}">
+				<a href="{{../../abspath}}/{{basename}}.html" class="{{data.icon}}{{#if isCurrentPage}} active{{/if}}">
 					<strong>{{data.title}}</strong>
 					{{data.menu_text}}
 				</a>

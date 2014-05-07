@@ -49,6 +49,15 @@ module.exports = function(grunt) {
 			icon_layout: {
 				src: 'temp/icons.data.svg.css',
 				dest: 'css/icons/_icons-layout.scss'
+			},
+			includes: {
+				files: [{
+					expand: true,
+					cwd: 'includes',
+					src: '**/*.*',
+					dest: 'build',
+					dot: true
+				}]
 			}
 		},
 		concat: {
@@ -125,6 +134,13 @@ module.exports = function(grunt) {
 				files: ['layouts/*.*', 'pages/*.*', 'partials/*.*'],
 				tasks: 'newer:assemble'
 			},
+			includes: {
+				options: {
+					dot: true
+				},
+				files: ['includes/**/*.*'],
+				tasks: 'newer:copy:includes'
+			},
 			livereload: {
 				options: {
 					livereload: true
@@ -136,14 +152,15 @@ module.exports = function(grunt) {
 			options: {
 				logConcurrentOutput: true
 			},
-			dev: ['watch:css', 'watch:livereload', 'watch:assemble']
+			dev: ['watch:css', 'watch:livereload', 'watch:assemble', 'watch:includes']
 		},
 		assemble: {
 			dist: {
 				options: {
 					layout: "default.hbs",
 					layoutdir: 'layouts',
-					partials: 'partials/*.{hbs,md}'
+					partials: 'partials/*.{hbs,md}',
+					data: 'data.yml'
 				},
 				files: [{
 					expand: true,
@@ -151,6 +168,14 @@ module.exports = function(grunt) {
 					src: '**/*.{md,hbs}',
 					dest: 'build'
 				}]
+			},
+			browserconfig: {
+				options: {
+					data: 'data.yml',
+					ext: '.xml',
+				},
+				src: ['browserconfig.hbs'],
+				dest: 'build'
 			}
 		}
 	});
@@ -188,7 +213,8 @@ module.exports = function(grunt) {
 		'js_root_files',
 		'js_layout',
 		'js_home',
-		'assemble'
+		'assemble',
+		'copy:includes'
 	]);
 	grunt.registerTask('dev', ['concurrent:dev']);
 
