@@ -71,7 +71,11 @@ module.exports = function(grunt) {
 			home: {
 				src: ['js/home/*.js'],
 				dest: 'build/js/home.js'
-			}
+			},
+			email_decode: {
+				src: ['js/email_decode/*.js'],
+				dest: 'build/js/email_decode.js'
+			},
 
 		},
 		closureCompiler: {
@@ -86,6 +90,11 @@ module.exports = function(grunt) {
 				src: 'build/js/home.js',
 				dest: 'build/js/home.js'
 			},
+			email_decode: {
+				src: 'build/js/email_decode.js',
+				dest: 'build/js/email_decode.js'
+			},
+
 			root_files: {
 				files: [{
 					expand: true,
@@ -201,6 +210,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('all_images', ['imagemin:all_files', 'copy:all_notsupported_images']);
 	grunt.registerTask('js_layout', ['concat:layout', 'closureCompiler:layout']);
 	grunt.registerTask('js_home', ['concat:home', 'closureCompiler:home']);
+	grunt.registerTask('js_email_decode', ['concat:email_decode', 'closureCompiler:email_decode']);
 	grunt.registerTask('js_root_files', ['closureCompiler:root_files']);
 	grunt.registerTask('icon_layout', ['svgmin:layout_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_layout', 'clean:temp']);
 
@@ -213,6 +223,7 @@ module.exports = function(grunt) {
 		'js_root_files',
 		'js_layout',
 		'js_home',
+		'js_email_decode',
 		'assemble',
 		'copy:includes'
 	]);

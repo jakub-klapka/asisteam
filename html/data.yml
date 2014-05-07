@@ -1,4 +1,4 @@
-#abspath: http://localhost:63342/asisteam/html/build
-#htmlext: .html
-abspath: http://www.lumiart.cz/klapka/asisteam/html/build
-htmlext:
+abspath: http://localhost:63342/asisteam/html/build
+htmlext: .html
+#abspath: http://www.lumiart.cz/klapka/asisteam/html/build
+#htmlext:

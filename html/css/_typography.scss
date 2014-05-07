@@ -48,6 +48,18 @@
 		width: 100%;
 		border: 1px solid $light_blue;
 
+		&.no-border {
+			border: none;
+
+			> tr > td,
+			> tr > th,
+			> tbody > tr > td,
+			> thead > tr > th
+			{
+				border: none;
+			}
+		}
+
 		th {
 			background: $light_blue;
 			color: #FFF;
