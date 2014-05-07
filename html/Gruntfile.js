@@ -183,7 +183,9 @@ module.exports = function(grunt) {
 					layout: "default.hbs",
 					layoutdir: 'layouts',
 					partials: 'partials/*.{hbs,md}',
-					data: 'data.yml',
+					data: [
+						'data.yml',
+						'featured_nav.yml']
 				},
 				files: [{
 					expand: true,

@@ -1,0 +1,75 @@
+-
+ class: briefcase
+ target_id: pujcky_na_cokoliv
+ title: Půjčky na cokoliv
+ note: k vybavení domácnosti..
+ fn_content: "
+<h2>neúčelový úvěr - OPTIMUM</h2>
+<p>Má většinou charakter spotřebitelského úvěru a je definován dle zákona č. 145/2010 Sb., o spotřebitelském úvěru a o změně některých zákonů. Účel u spotřebitelského	úvěru se nevyžaduje, ale klient musí dostatečně doložit svou bonitu pro získání	úvěru. Využívá se především na vybavení domácností, konsolidaci půjček a nákup spotřebního zboží a vyplacení exekucí.</p>
+<h3>Parametry úvěru:</h3>
+<ul>
+    <li>zajištěný zástavním právem k nemovitosti</li>
+    <li>doba splatnosti až 20 let</li>
+    <li>úroková sazba od 12,99% p. a. – fixní</li>
+    <li>max. výše úvěru 50% zástavní hodnoty nemovitosti</li>
+</ul>
+<mark>Můžete konsolidovat všechny své půjčky, které splácíte pravidelnými měsíčními splátkami, kreditní karty a kontokorenty. Spojit můžete závazky jiných bank i	splátkových společností včetně úvěrů a hypoték.</mark>
+"
+-
+ class: flag
+ target_id: uvery_pro_podnikatele
+ title: Úvěry pro<br>podnikatele
+ note: k vybavení domácnosti..
+ fn_content: "
+<h2>neúčelový úvěr - OPTIMUM</h2>
+<p>Žadateli jsou právnické osoby – živnostníci, firmy majícím oprávnění podnikat na území České republiky a aktivně podnikají.</p>
+<p><mark>U tohoto typu úvěru není vyžadován konkrétní účel použití úvěrových prostředků.</mark></p>
+<h3>Podnikateli je využíván zejména k</h3>
+<ul>
+    <li>krytí krátkodobých provozních potřeb</li>
+    <li>zakoupení nového vybavení, zboží, materiálu</li>
+    <li>investic do nových technologií, reklamy, marketingu, SW</li>
+    <li>výstavbu, nákup a opravy nemovitostí sloužících k podnikání</li>
+</ul>
+<h3>Parametry úvěru</h3>
+<ul>
+    <li>zajištěný zástavním právem k nemovitosti</li>
+    <li>doba splatnosti až 20 let</li>
+    <li>úroková sazba od 12,99% p. a. – fixní</li>
+    <li>max. výše úvěru 50% zástavní hodnoty nemovitosti</li>
+</ul>
+"
+-
+ class: home
+ target_id: ucelove_pujcky
+ title: Účelové půjčky
+ note: ke koupi, výstavbě, rekonstrukci
+ fn_content: "
+<h2>účelový úvěr - SPECIFIK</h2>
+<h3>Jsou určeny na financování vlastního bydlení za účelem</h3>
+<ul>
+    <li>koupě nemovitosti</li>
+    <li>koupě spoluvlastnického podílu na nemovitosti</li>
+    <li>koupě stavebního pozemku</li>
+    <li>výstavba, dostavba, rekonstrukce, modernizace nemovitosti</li>
+    <li>vypořádání spoluvlastnických a dědických nároků k nemovitosti</li>
+    <li>získání členských práv v družstvu</li>
+    <li>připojení nemovitosti sloužící k bydlení k veřejným sítím</li>
+    <li>bez uvedení účelu (americká hypotéka)</li>
+    <li>refinancování úvěru dříve poskytnutého na výše uvedené účely</li>
+</ul>
+<p><mark>Uvedené účely lze vzájemně kombinovat.</mark></p>
+<h3>Parametry úvěru</h3>
+<ul>
+    <li>zajištěný zástavním právem k nemovitosti</li>
+    <li>doba splatnosti až 20 let</li>
+    <li>nízká úroková sazba od 10,99% p. a. - fixní</li>
+    <li>výše úvěru - max. výše úvěru 60% zástavní hodnoty nemovitosti</li>
+</ul>
+"
+-
+ class: chart
+ target_id: pujcky_na_cokoliv
+ title: Konsolidace
+ note: sloučíme drahé půjčky, vyplatíme exekuci
+ use_other_target: true

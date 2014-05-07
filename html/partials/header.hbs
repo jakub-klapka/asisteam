@@ -38,7 +38,7 @@
 	<nav class="main_nav" role="navigation">
 		<a class="logo" href="{{abspath}}"><img src="{{abspath}}/images/logo.png" alt="AsisTeam Logo" width="161" height="34"/></a>
 		<ul>
-			{{#withSort pages 'data.menu_position'}}
+			{{#withSort pages "data.menu_position" asc}}{{debug}}
 				{{#unless data.featured_menu}}
 					{{#unless data.no_menu}}
 						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../../abspath}}/{{basename}}{{../../../htmlext}}">{{data.title}}</a></li>
@@ -49,14 +49,20 @@
 	</nav>
 
 	<nav class="featured_nav" role="navigation">
-		{{#withSort pages 'data.menu_position'}}
-			{{#if data.featured_menu}}
-				<a href="{{../../abspath}}/{{basename}}{{../../htmlext}}" class="{{data.icon}}{{#if isCurrentPage}} active{{/if}}">
-					<strong>{{data.title}}</strong>
-					{{data.menu_text}}
-				</a>
-			{{/if}}
-		{{/withSort}}
+		{{#each featured_nav}}
+			<a class="{{class}}" data-target="{{target_id}}" href="">
+				<strong>{{{title}}}</strong>
+				{{note}}
+			</a>
+		{{/each}}
 	</nav>
+
+	{{#each featured_nav}}
+		{{#unless use_other_target}}
+			<div class="featured_item" data-item="{{target_id}}">
+				{{{fn_content}}}
+			</div>
+		{{/unless}}
+	{{/each}}
 
 </header>
