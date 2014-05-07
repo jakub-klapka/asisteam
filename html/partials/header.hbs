@@ -41,7 +41,7 @@
 			{{#withSort pages 'data.menu_position'}}
 				{{#unless data.featured_menu}}
 					{{#unless data.no_menu}}
-						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../../abspath}}/{{basename}}.html">{{data.title}}</a></li>
+						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../../abspath}}/{{basename}}{{../../../htmlext}}">{{data.title}}</a></li>
 					{{/unless}}
 				{{/unless}}
 			{{/withSort}}
@@ -51,7 +51,7 @@
 	<nav class="featured_nav" role="navigation">
 		{{#withSort pages 'data.menu_position'}}
 			{{#if data.featured_menu}}
-				<a href="{{../../abspath}}/{{basename}}.html" class="{{data.icon}}{{#if isCurrentPage}} active{{/if}}">
+				<a href="{{../../abspath}}/{{basename}}{{../../htmlext}}" class="{{data.icon}}{{#if isCurrentPage}} active{{/if}}">
 					<strong>{{data.title}}</strong>
 					{{data.menu_text}}
 				</a>
