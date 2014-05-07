@@ -161,7 +161,7 @@ body {
 		}
 
 		//Icons
-		$types: 'briefcase', 'chart', 'whiteboard', 'flag';
+		$types: 'briefcase', 'home', 'whiteboard', 'flag';
 
 		@each $type in $types {
 			&.#{$type} {
