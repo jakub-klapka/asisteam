@@ -325,6 +325,7 @@ body:active:after {
 				padding: 5px;
 				margin-top: 5px;
 				height: 60px;
+				transition: color 200ms;
 
 				strong {
 					display: block;
@@ -334,23 +335,39 @@ body:active:after {
 
 		.splatka {
 			@extend %boxes;
-			width: 55%;
+			width: 62%;
 			float: left;
 
 			.box {
 				color: $main_green;
 				font-size: 13px;
 				text-align: center;
+				padding-top: 10px;
+				position: relative;
 
 				strong {
-					font-size: 25px;
+					font-size: 18px;
+				}
+
+				&::after {
+					content: '';
+					background: url('../images/preloader.gif') no-repeat;
+					width: 96px;
+					height: 9px;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					margin-left: -(96px/2);
+					margin-top: -(9px/2);
+					opacity: 0;
+					transition: opacity 200ms;
 				}
 			}
 		}
 
 		.rpsn {
 			@extend %boxes;
-			width: 40%;
+			width: 35%;
 			float: right;
 
 			.box {
@@ -358,7 +375,7 @@ body:active:after {
 				font-size: 17px;
 				font-weight: bold;
 				padding-left: 8px;
-				padding-top: 8px;
+				padding-top: 18px;
 			}
 		}
 
@@ -448,6 +465,22 @@ body:active:after {
 				vertical-align: middle;
 				margin-left: 5px;
 			}
+		}
+	}
+
+	&.loading {
+
+		.splatka .box {
+			color: transparent;
+
+			&::after {
+				opacity: 1;
+			}
+		}
+
+		.rpsn .box
+		{
+			color: transparent;
 		}
 
 	}
