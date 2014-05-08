@@ -154,7 +154,7 @@ module.exports = function(grunt) {
 				tasks: ['css_livereload']
 			},
 			assemble: {
-				files: ['layouts/*.*', 'pages/*.*', 'partials/*.*'],
+				files: ['layouts/*.*', 'pages/*.*', 'partials/*.*', 'php_pages/*.*'],
 				tasks: 'newer:assemble'
 			},
 			includes: {
@@ -164,18 +164,23 @@ module.exports = function(grunt) {
 				files: ['includes/**/*.*'],
 				tasks: 'newer:copy:includes'
 			},
+			form: {
+				files: ['form.php'],
+				tasks: 'replace'
+			},
 			livereload: {
 				options: {
 					livereload: true
 				},
-				files: ['build/**/*.{css,js,jpg,jpeg,png,gif,html}', '*.html', 'js/*.js']
+				files: ['build/**/*.{css,js,jpg,jpeg,png,gif,html,php}', '*.html', 'js/*.js']
 			}
 		},
 		concurrent: {
 			options: {
-				logConcurrentOutput: true
+				logConcurrentOutput: true,
+				limit: 10
 			},
-			dev: ['watch:css', 'watch:livereload', 'watch:assemble', 'watch:includes']
+			dev: ['watch:css', 'watch:livereload', 'watch:assemble', 'watch:includes', 'watch:form']
 		},
 		assemble: {
 			dist: {
@@ -201,9 +206,33 @@ module.exports = function(grunt) {
 				},
 				src: ['browserconfig.hbs'],
 				dest: 'build'
+			},
+
+		},
+		replace: {
+			options: {
+				patterns: [
+					{
+						match: 'header',
+						replacement: grunt.file.read("build/template.html").match(/([\s\S]+.+role=\"main\")>/ig)[0]
+					},
+					{
+						match: 'footer',
+						replacement: grunt.file.read("build/template.html").match(/(<footer class="main_footer">[\s\S]+)/ig)[0]
+					},
+
+				]
+			},
+			dist: {
+				src: 'form.php',
+				dest: 'build/form.php'
 			}
+
 		}
 	});
+
+
+
 
 	// Load the plugin that provides the "uglify" task.
 	grunt.loadNpmTasks('grunt-contrib-sass');
@@ -219,6 +248,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('assemble' );
 	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-replace');
 
 	//helpers
 	grunt.registerTask('css_all_files', ['sass:all_files', 'autoprefixer:all_files']);
@@ -242,6 +272,7 @@ module.exports = function(grunt) {
 		'js_home',
 		'js_email_decode',
 		'assemble',
+		'replace',
 		'copy:includes'
 	]);
 	grunt.registerTask('dev', ['concurrent:dev']);

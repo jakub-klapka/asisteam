@@ -17,6 +17,10 @@
 
 			this.bindEvents();
 
+			if( this.form.data('compute-rightaway') == true ) {
+				this.updateValues();
+			}
+
 		},
 
 		bindEvents: function () {
@@ -110,6 +114,22 @@
 			evt.preventDefault();
 			window.open($(this).attr('href'),'title', 'width=800, height=700,scrollbars=1,menubar=no,status=no,toolbar=no');
 		});
+
+		//Podminky
+		var podminky = $('#checkbox');
+		if( podminky.length >= 1 ) {
+			var form = $('#calculator');
+			form.on('submit', function(evt) {
+				if( !podminky.is(':checked') ) {
+					evt.preventDefault();
+					if( podminky.data('osobni-udaje') == true ) {
+						alert('Musíte souhlasit se zpracováním osobních údajů.');
+					} else {
+						alert('Musíte souhlasit s obchodními podmínkami.');
+					}
+				}
+			});
+		}
 
 	});
 

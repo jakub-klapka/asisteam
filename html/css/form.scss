@@ -1,0 +1,22 @@
+@import "global";
+
+label {
+	display: block;
+	margin-bottom: 10px;
+
+	input,
+	textarea
+	{
+		display: block;
+		width: 100%;
+		background: $banner_grey;
+		border: none;
+		padding: 10px;
+		color: $form_select_color;
+	}
+
+	textarea {
+		height: 100px;
+		resize: vertical;
+	}
+}

@@ -38,7 +38,7 @@
 	<nav class="main_nav" role="navigation">
 		<a class="logo" href="{{abspath}}"><img src="{{abspath}}/images/logo.png" alt="AsisTeam Logo" width="161" height="34"/></a>
 		<ul>
-			{{#withSort pages "data.menu_position" asc}}{{debug}}
+			{{#withSort pages "data.menu_position"}}
 				{{#unless data.featured_menu}}
 					{{#unless data.no_menu}}
 						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../../abspath}}/{{basename}}{{../../../htmlext}}">{{data.title}}</a></li>
