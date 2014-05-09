@@ -154,27 +154,27 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 
 		<label>
 			Jméno:
-			<input type="text" name="jmeno" value="<?php if( isset( $_POST['jmeno'] ) ) echo $_POST['jmeno']; ?>" />
+			<input type="text" name="jmeno" value="<?php if( isset( $_POST['jmeno'] ) ) echo $_POST['jmeno']; ?>" required="required" />
 		</label>
 
 		<label>
 			Přijmení:
-			<input type="text" name="prijmeni" value="<?php if( isset( $_POST['prijmeni'] ) ) echo $_POST['prijmeni']; ?>" />
+			<input type="text" name="prijmeni" value="<?php if( isset( $_POST['prijmeni'] ) ) echo $_POST['prijmeni']; ?>" required="required" />
 		</label>
 
 		<label>
 			Adresa:
-			<textarea name="adresa"><?php if( isset( $_POST['adresa'] ) ) echo $_POST['adresa']; ?></textarea>
+			<textarea name="adresa" required="required"><?php if( isset( $_POST['adresa'] ) ) echo $_POST['adresa']; ?></textarea>
 		</label>
 
 		<label>
 			Telefon:
-			<input type="text" name="telefon" value="<?php if( isset( $_POST['telefon'] ) ) echo $_POST['telefon']; ?>" />
+			<input type="text" name="telefon" value="<?php if( isset( $_POST['telefon'] ) ) echo $_POST['telefon']; ?>" required="required" />
 		</label>
 
 		<label>
 			E-mail:
-			<input type="text" name="email" value="<?php if( isset( $_POST['email'] ) ) echo $_POST['email']; ?>" />
+			<input type="text" name="email" value="<?php if( isset( $_POST['email'] ) ) echo $_POST['email']; ?>" required="required" />
 		</label>
 
 		<label>
@@ -184,7 +184,7 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 
 		<div class="checkbox">
 			<input type="checkbox" id="checkbox" data-osobni-udaje="true" name="checkbox" <?php if( isset( $_POST['checkbox'] ) && $_POST['checkbox'] == 'on' ) : ?>checked="checked" <?php endif; ?> />
-			<label for="checkbox"><a href="podminky.html" target="_blank" class="open_terms">Souhlasím se zpracováním osobních údajů</a></label>
+			<label for="checkbox"><a href="zpracovani-udaju-popup.html" target="_blank" class="open_terms">Souhlasím se zpracováním osobních údajů</a></label>
 		</div>
 
 		<label>
@@ -202,7 +202,7 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 
 <?php
 //2ND step
-if( isset( $_POST['step1_submit'] ) && $error == false ):
+if( isset( $_POST['step1_submit'] ) && $error == false && !isset( $_POST['step2_submit'] ) ):
 
 $include_secret = 'secret';
 global $include_secret;
@@ -210,7 +210,7 @@ require_once('calculator.php');
 $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 
 ?>
-<h2>Zkontrolujte si údaje:</h2>
+<h2>Zkontrolujte si prosím údaje:</h2>
 
 <table>
 	<tr>
@@ -219,7 +219,7 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 	</tr>
 	<tr>
 		<td><strong>Doba splácení:</strong></td>
-		<td><?php echo $_POST['vyse_platby_v_mesicich']; ?> roků</td>
+		<td><?php echo $_POST['vyse_platby_v_mesicich']; ?> let</td>
 	</tr>
 	<tr>
 		<td><strong>Splátka:</strong></td>
@@ -239,7 +239,7 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 	</tr>
 	<tr>
 		<td><strong>Adresa:</strong></td>
-		<td><?php echo $_POST['adresa']; ?></td>
+		<td><?php echo str_replace( array("\r\n", "\n", "\r"), '<br/>', $_POST['adresa']); ?></td>
 	</tr>
 	<tr>
 		<td><strong>Telefon:</strong></td>
@@ -251,16 +251,161 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 	</tr>
 	<tr>
 		<td><strong>Poznámka:</strong></td>
-		<td><?php echo $_POST['poznamka']; ?></td>
+		<td><?php echo str_replace( array("\r\n", "\n", "\r"), '<br/>', $_POST['poznamka']); ?></td>
 	</tr>
 
 
-</table>
+</table><br/>
 
-<h2>Údaje o nemovitosti, která bude předmětem zástavy</h2>
+<h2>Údaje o nemovitosti, která bude předmětem zástavy:</h2>
+<section class="calculator" style="float: none; width: 50%">
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" method="post" >
+
+		<input type="hidden" name="vyse_uveru" value="<?php echo $_POST['vyse_uveru']; ?>"/>
+		<input type="hidden" name="vyse_platby_v_mesicich" value="<?php echo $_POST['vyse_platby_v_mesicich']; ?>"/>
+		<input type="hidden" name="jmeno" value="<?php echo $_POST['jmeno']; ?>"/>
+		<input type="hidden" name="prijmeni" value="<?php echo $_POST['prijmeni']; ?>"/>
+		<input type="hidden" name="adresa" value="<?php echo $_POST['adresa']; ?>"/>
+		<input type="hidden" name="telefon" value="<?php echo $_POST['telefon']; ?>"/>
+		<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>"/>
+		<input type="hidden" name="poznamka" value="<?php echo $_POST['poznamka']; ?>"/>
+		<input type="hidden" name="captcha" value="<?php echo $_POST['captcha']; ?>"/>
+		<input type="hidden" name="step1_submit" value="on"/>
+
+		<label>
+			Ulice, č.p.:
+			<input type="text" name="ulice" />
+		</label>
+
+		<label>
+			Město:
+			<input type="text" name="mesto" />
+		</label>
+
+		<label class="select">
+			Druh nemovitosti:
+			<div class="style_wrap">
+				<select name="druh_nemovitosti">
+					<option value="Rodinný dům">Rodinný dům</option>
+					<option value="Byt">Byt</option>
+					<option value="Družstevní byt">Družstevní byt</option>
+					<option value="Pozemek">Pozemek</option>
+					<option value="Komerční objekt">Komerční objekt</option>
+					<option value="Chata">Chata</option>
+					<option value="Jiná">Jiná</option>
+				</select>
+			</div>
+		</label>
+
+		<label>
+			Předpokládaná hodnota nemovitosti:
+			<input type="text" name="predpokladana_hodnota" />
+		</label>
+
+		<div class="checkbox">
+			<input type="checkbox" name="jsem_vlastnik" id="jsem_vlastnik" />
+			<label for="jsem_vlastnik">Jsem vlastník nemovitosti</label>
+		</div>
+
+		<div class="checkbox">
+			<input type="checkbox" name="exekuce" id="exekuce" />
+			<label for="exekuce">Mám exekuci</label>
+		</div>
+
+		<label>
+			Fotografie nemovitosti:
+			<input type="file" name="fotografie[]" multiple />
+			<small style="font-size: 10px;">(Použijte Shift nebo Ctrl pro vybrání více souborů)</small>
+		</label>
+
+		<button type="submit" class="submit" name="step2_submit">Odeslat</button>
+
+	</form>
+</section>
+
+<?php endif; ?>
+<?php if( isset( $_POST['step2_submit'] ) && $error == false ) :
 
 
+$include_secret = 'secret';
+global $include_secret;
+require_once('calculator.php');
+$data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 
+include_once('mail/mail.php');
+
+$message = sprintf('
+Odeslána nová žádost z webu asisteam.cz:
+
+Výše úvěru: %s,-Kč
+Doba splácení: %s let
+Vypočtená splátka: %s Kč/měsíc
+Vypočtené RPSN: %s %%
+Jméno: %s
+Příjmení: %s
+Adresa: %s
+Telefon: %s
+E-mail: %s
+Poznámka: %s
+
+Údaje o nemovitosti k zajištění:
+Ulice: %s
+Město: %s
+Druh nemovitosti: %s
+Předpokládaná hodnota nemovitosti: %s
+Je vlastník nemovitosti: %s
+Je exekuce: %s
+Počet fotografií v příloze: %s
+
+(Pozn: Uživatel mohl přiložit cokoliv, neotevírejte podezřelé soubory v přílohách!)
+',
+	$_POST['vyse_uveru'],
+	$_POST['vyse_platby_v_mesicich'],
+	$data['splatka'],
+	$data['rpsn'],
+	$_POST['jmeno'],
+	$_POST['prijmeni'],
+	$_POST['adresa'],
+	$_POST['telefon'],
+	$_POST['email'],
+	$_POST['poznamka'],
+	$_POST['ulice'],
+	$_POST['mesto'],
+	$_POST['druh_nemovitosti'],
+	$_POST['predpokladana_hodnota'],
+	(isset($_POST['jsem_vlastnik'])) ? 'Ano' : 'Ne',
+	(isset($_POST['exekuce'])) ? 'Ano' : 'Ne',
+	($_FILES['fotografie']['size'][0] == 0) ? 0 : count($_FILES['fotografie']['size'])
+);
+
+if( !is_dir('uploads') ) {
+	mkdir('uploads');
+}
+
+$atts = array();
+
+if( isset( $_FILES['fotografie'] ) && $_FILES['fotografie']['size'][0] != 0 ) {
+
+	for( $i = 0; $i < count( $_FILES['fotografie']['size'] ); $i++ ) {
+		move_uploaded_file( $_FILES['fotografie']['tmp_name'][$i], 'uploads/' . $_FILES['fotografie']['name'][$i] );
+		$atts[] = 'uploads/' . $_FILES['fotografie']['name'][$i];
+	}
+
+}
+
+$mail_send = wp_mail( 'lapak@lumiart.cz', 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
+
+foreach( $atts as $file ) {
+	unlink( $file );
+}
+
+?>
+
+<?php if( $mail_send == true ) : ?>
+	<span style="color: green">Vaše žádost byla odeslána, budeme vás co nejdříve kontaktovat.</span>
+<?php else : ?>
+	<span style="color: red">Nepodařilo se odeslat žádost, zkuste se vrátit zpět a poslat ji znova, nebo nás kontaktovat jinak. Omlouváme se za potíže.</span>
+<?php endif; ?>
 
 <?php endif; ?>
 
