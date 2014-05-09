@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		sass: {
 			options: {
-				style: 'expanded',
+				style: 'compressed',
 				precision: 7
 			},
 			all_files: {

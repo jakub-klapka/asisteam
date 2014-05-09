@@ -72,7 +72,7 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 	</ul>
 <?php endif; ?>
 
-<section class="calculator" style="float: none; width: 50%">
+<section class="calculator" style="float: none; width: 100%">
 	<form id="calculator" data-compute-rightaway="true" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<label class="select">
 			Výše úvěru:
@@ -258,7 +258,7 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 </table><br/>
 
 <h2>Údaje o nemovitosti, která bude předmětem zástavy:</h2>
-<section class="calculator" style="float: none; width: 50%">
+<section class="calculator" style="float: none; width: 100%">
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" method="post" >
 
 		<input type="hidden" name="vyse_uveru" value="<?php echo $_POST['vyse_uveru']; ?>"/>
