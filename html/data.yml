@@ -2,3 +2,5 @@
 #htmlext: .html
 abspath: http://www.lumiart.cz/klapka/asisteam/html/build
 htmlext:
+
+css_js_ver: 1

@@ -8,9 +8,9 @@
 	var LumiPolyfill = { 'theme_path': '{{abspath}}/' };
 	var Calculator = { 'handler_url': '{{abspath}}/calculator.php' };
 </script>
-<script type="text/javascript" src="{{abspath}}/js/layout.js"></script>
+<script type="text/javascript" src="{{abspath}}/js/layout.js?v={{css_js_ver}}"></script>
 {{#each footer_scripts}}
-	<script type="text/javascript" src="{{../abspath}}/js/{{this}}"></script>
+	<script type="text/javascript" src="{{../abspath}}/js/{{this}}?v={{css_js_ver}}"></script>
 {{/each}}
 </body>
 </html>

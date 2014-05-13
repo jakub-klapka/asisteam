@@ -7,9 +7,9 @@
 	<script type="text/javascript" src="{{abspath}}/js/modernizr.js"></script>
 
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="{{abspath}}/css/layout.css?v=1"/>
+	<link rel="stylesheet" href="{{abspath}}/css/layout.css?v={{css_js_ver}}"/>
 	{{#each styles}}
-		<link rel="stylesheet" href="{{../abspath}}/css/{{this}}"/>
+		<link rel="stylesheet" href="{{../abspath}}/css/{{this}}?v={{css_js_ver}}"/>
 	{{/each}}
 
 	<link rel="shortcut icon" href="{{abspath}}/images/favicons/favicon.ico">

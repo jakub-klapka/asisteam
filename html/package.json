@@ -6,7 +6,6 @@
     "grunt": "~0.4.4",
     "grunt-contrib-sass": "~0.7.3",
     "grunt-autoprefixer": "~0.7.2",
-    "grunt-contrib-imagemin": "~0.6.1",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-concat": "~0.4.0",
     "grunt-closure-tools": "~0.9.6",
@@ -17,6 +16,7 @@
     "grunt-concurrent": "~0.5.0",
     "assemble": "~0.4.37",
     "grunt-newer": "~0.7.0",
-    "grunt-replace": "~0.7.7"
+    "grunt-replace": "~0.7.7",
+    "grunt-contrib-imagemin": "~0.7.0"
   }
 }

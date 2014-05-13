@@ -357,6 +357,8 @@ Je vlastník nemovitosti: %s
 Je exekuce: %s
 Počet fotografií v příloze: %s
 
+IP Adresa odesílatele: %s
+
 (Pozn: Uživatel mohl přiložit cokoliv, neotevírejte podezřelé soubory v přílohách!)
 ',
 	$_POST['vyse_uveru'],
@@ -375,7 +377,8 @@ Počet fotografií v příloze: %s
 	$_POST['predpokladana_hodnota'],
 	(isset($_POST['jsem_vlastnik'])) ? 'Ano' : 'Ne',
 	(isset($_POST['exekuce'])) ? 'Ano' : 'Ne',
-	($_FILES['fotografie']['size'][0] == 0) ? 0 : count($_FILES['fotografie']['size'])
+	($_FILES['fotografie']['size'][0] == 0) ? 0 : count($_FILES['fotografie']['size']),
+	$_SERVER['REMOTE_ADDR']
 );
 
 if( !is_dir('uploads') ) {
