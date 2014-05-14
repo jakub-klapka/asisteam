@@ -38,8 +38,20 @@ if( isset( $_POST['step1_submit'] ) ) {
 		$error[] = 'Musíte vyplnit příjmení.';
 	}
 
-	if( empty( $_POST['adresa'] ) ) {
-		$error[] = 'Musíte vyplnit adresu.';
+	if( empty( $_POST['ulice'] ) ) {
+		$error[] = 'Musíte vyplnit ulici.';
+	}
+
+	if( empty( $_POST['cislo_popisne'] ) ) {
+		$error[] = 'Musíte vyplnit číslo popisné.';
+	}
+
+	if( empty( $_POST['mesto'] ) ) {
+		$error[] = 'Musíte vyplnit město.';
+	}
+
+	if( empty( $_POST['psc'] ) ) {
+		$error[] = 'Musíte vyplnit PSČ.';
 	}
 
 	if( empty( $_POST['telefon'] ) ) {
@@ -79,9 +91,13 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 			<div class="style_wrap">
 				<select name="vyse_uveru">
 					<option value="100000"<?php if( $vyse_uveru == 100000 ): ?> selected="selected"<?php endif; ?>>100.000 Kč</option>
+					<option value="150000"<?php if( $vyse_uveru == 150000 ): ?> selected="selected"<?php endif; ?>>150.000 Kč</option>
 					<option value="200000"<?php if( $vyse_uveru == 200000 ): ?> selected="selected"<?php endif; ?>>200.000 Kč</option>
+					<option value="250000"<?php if( $vyse_uveru == 250000 ): ?> selected="selected"<?php endif; ?>>250.000 Kč</option>
 					<option value="300000"<?php if( $vyse_uveru == 300000 ): ?> selected="selected"<?php endif; ?>>300.000 Kč</option>
+					<option value="350000"<?php if( $vyse_uveru == 350000 ): ?> selected="selected"<?php endif; ?>>350.000 Kč</option>
 					<option value="400000"<?php if( $vyse_uveru == 400000 ): ?> selected="selected"<?php endif; ?>>400.000 Kč</option>
+					<option value="450000"<?php if( $vyse_uveru == 450000 ): ?> selected="selected"<?php endif; ?>>450.000 Kč</option>
 					<option value="500000"<?php if( $vyse_uveru == 500000 ): ?> selected="selected"<?php endif; ?>>500.000 Kč</option>
 					<option value="600000"<?php if( $vyse_uveru == 600000 ): ?> selected="selected"<?php endif; ?>>600.000 Kč</option>
 					<option value="700000"<?php if( $vyse_uveru == 700000 ): ?> selected="selected"<?php endif; ?>>700.000 Kč</option>
@@ -145,7 +161,7 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 				úrok 13.99% p.a.
 			</div>
 		</div>
-		<div class="rpsn">
+		<div class="rpsn" style="visibility: hidden;">
 			RPSN
 			<div class="box">
 				<span id="calculator_rpsn">18,68</span>%
@@ -163,8 +179,23 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 		</label>
 
 		<label>
-			Adresa:
-			<textarea name="adresa" required="required"><?php if( isset( $_POST['adresa'] ) ) echo $_POST['adresa']; ?></textarea>
+			Ulice:
+			<input type="text" name="ulice" value="<?php if( isset( $_POST['ulice'] ) ) echo $_POST['ulice']; ?>" required="required" />
+		</label>
+
+		<label>
+			Ćíslo popisné:
+			<input type="text" name="cislo_popisne" value="<?php if( isset( $_POST['cislo_popisne'] ) ) echo $_POST['cislo_popisne']; ?>" required="required" />
+		</label>
+
+		<label>
+			Město:
+			<input type="text" name="mesto" value="<?php if( isset( $_POST['mesto'] ) ) echo $_POST['mesto']; ?>" required="required" />
+		</label>
+
+		<label>
+			PSČ:
+			<input type="text" name="psc" value="<?php if( isset( $_POST['psc'] ) ) echo $_POST['psc']; ?>" required="required" />
 		</label>
 
 		<label>
@@ -183,8 +214,13 @@ if( !isset( $_POST['step1_submit'] ) || $error != false ):
 		</label>
 
 		<div class="checkbox">
-			<input type="checkbox" id="checkbox" data-osobni-udaje="true" name="checkbox" <?php if( isset( $_POST['checkbox'] ) && $_POST['checkbox'] == 'on' ) : ?>checked="checked" <?php endif; ?> />
-			<label for="checkbox"><a href="zpracovani-udaju-popup.html" target="_blank" class="open_terms">Souhlasím se zpracováním osobních údajů</a></label>
+			<input id="check_osobni" type="checkbox" data-required-checkbox="true" data-osobni-udaje="true" name="checkbox" <?php if( isset( $_POST['checkbox'] ) && $_POST['checkbox'] == 'on' ) : ?>checked="checked" <?php endif; ?> />
+			<label for="check_osobni"><a href="zpracovani-udaju-popup.html" target="_blank" class="open_terms">Souhlasím se zpracováním osobních údajů</a></label>
+		</div>
+
+		<div class="checkbox">
+			<input type="checkbox" id="check_platebni" data-required-checkbox="true"/>
+			<label for="check_platebni"><a href="podminky-uveru-popup.html" target="_blank" class="open_terms">Souhlasím s platebními podmínkami</a></label>
 		</div>
 
 		<label>
@@ -225,10 +261,10 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 		<td><strong>Splátka:</strong></td>
 		<td><?php echo $data['splatka']; ?> Kč / měsíc</td>
 	</tr>
-	<tr>
+	<?php /*<tr>
 		<td><strong>RPSN:</strong></td>
 		<td><?php echo $data['rpsn']; ?>%</td>
-	</tr>
+	</tr>*/?>
 	<tr>
 		<td><strong>Jméno:</strong></td>
 		<td><?php echo $_POST['jmeno']; ?></td>
@@ -238,8 +274,20 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 		<td><?php echo $_POST['prijmeni']; ?></td>
 	</tr>
 	<tr>
-		<td><strong>Adresa:</strong></td>
-		<td><?php echo str_replace( array("\r\n", "\n", "\r"), '<br/>', $_POST['adresa']); ?></td>
+		<td><strong>Ulice:</strong></td>
+		<td><?php echo $_POST['ulice']; ?></td>
+	</tr>
+	<tr>
+		<td><strong>Číslo popisné:</strong></td>
+		<td><?php echo $_POST['cislo_popisne']; ?></td>
+	</tr>
+	<tr>
+		<td><strong>Město:</strong></td>
+		<td><?php echo $_POST['mesto']; ?></td>
+	</tr>
+	<tr>
+		<td><strong>PSČ:</strong></td>
+		<td><?php echo $_POST['psc']; ?></td>
 	</tr>
 	<tr>
 		<td><strong>Telefon:</strong></td>
@@ -265,7 +313,10 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 		<input type="hidden" name="vyse_platby_v_mesicich" value="<?php echo $_POST['vyse_platby_v_mesicich']; ?>"/>
 		<input type="hidden" name="jmeno" value="<?php echo $_POST['jmeno']; ?>"/>
 		<input type="hidden" name="prijmeni" value="<?php echo $_POST['prijmeni']; ?>"/>
-		<input type="hidden" name="adresa" value="<?php echo $_POST['adresa']; ?>"/>
+		<input type="hidden" name="ulice" value="<?php echo $_POST['ulice']; ?>"/>
+		<input type="hidden" name="cislo_popisne" value="<?php echo $_POST['cislo_popisne']; ?>"/>
+		<input type="hidden" name="mesto" value="<?php echo $_POST['mesto']; ?>"/>
+		<input type="hidden" name="psc" value="<?php echo $_POST['psc']; ?>"/>
 		<input type="hidden" name="telefon" value="<?php echo $_POST['telefon']; ?>"/>
 		<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>"/>
 		<input type="hidden" name="poznamka" value="<?php echo $_POST['poznamka']; ?>"/>
@@ -274,12 +325,12 @@ $data = calculate( $_POST['vyse_uveru'], $_POST['vyse_platby_v_mesicich'] );
 
 		<label>
 			Ulice, č.p.:
-			<input type="text" name="ulice" />
+			<input type="text" name="zastava_ulice" />
 		</label>
 
 		<label>
 			Město:
-			<input type="text" name="mesto" />
+			<input type="text" name="zastava_mesto" />
 		</label>
 
 		<label class="select">
@@ -343,7 +394,10 @@ Vypočtená splátka: %s Kč/měsíc
 Vypočtené RPSN: %s %%
 Jméno: %s
 Příjmení: %s
-Adresa: %s
+Ulice: %s
+Číslo popisné: %s
+Město: %s
+PSČ: %s
 Telefon: %s
 E-mail: %s
 Poznámka: %s
@@ -367,12 +421,15 @@ IP Adresa odesílatele: %s
 	$data['rpsn'],
 	$_POST['jmeno'],
 	$_POST['prijmeni'],
-	$_POST['adresa'],
+	$_POST['ulice'],
+	$_POST['cislo_popisne'],
+	$_POST['mesto'],
+	$_POST['psc'],
 	$_POST['telefon'],
 	$_POST['email'],
 	$_POST['poznamka'],
-	$_POST['ulice'],
-	$_POST['mesto'],
+	$_POST['zastava_ulice'],
+	$_POST['zastava_mesto'],
 	$_POST['druh_nemovitosti'],
 	$_POST['predpokladana_hodnota'],
 	(isset($_POST['jsem_vlastnik'])) ? 'Ano' : 'Ne',

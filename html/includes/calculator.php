@@ -11,6 +11,10 @@ function calculate($vyse_uveru, $doba_splaceni) {
 	for( $i = 1; $i <= 30; $i++ ) {
 		$vyse_uveru_valid[] = $i * 100000;
 	}
+	$vyse_uveru_valid[] = 150000;
+	$vyse_uveru_valid[] = 250000;
+	$vyse_uveru_valid[] = 350000;
+	$vyse_uveru_valid[] = 450000;
 	if( !in_array( $doba_splaceni, $doba_splaceni_valid ) || !in_array( $vyse_uveru, $vyse_uveru_valid ) ) {
 		error( 'Invalid entry' );
 		die();

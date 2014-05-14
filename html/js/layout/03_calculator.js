@@ -116,20 +116,22 @@
 		});
 
 		//Podminky
-		var podminky = $('#checkbox');
-		if( podminky.length >= 1 ) {
-			var form = $('#calculator');
+		$('input[data-required-checkbox]').each(function(){
+
+			var form = $('#calculator'),
+				t = $(this);
 			form.on('submit', function(evt) {
-				if( !podminky.is(':checked') ) {
+				if( !t.is(':checked') ) {
 					evt.preventDefault();
-					if( podminky.data('osobni-udaje') == true ) {
+					if( t.data('osobni-udaje') == true ) {
 						alert('Musíte souhlasit se zpracováním osobních údajů.');
 					} else {
-						alert('Musíte souhlasit s obchodními podmínkami.');
+						alert('Musíte souhlasit s platebními podmínkami.');
 					}
 				}
 			});
-		}
+
+		});
 
 	});
 
