@@ -153,8 +153,57 @@
 .main_content {
 	float: none;
 	width: $page_wrap_width;
+	position: relative;
 }
 
 .calculator {
 	margin-bottom: 0;
+}
+
+@import "icons/icons-home";
+
+.home_kontakt {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	.tel,
+	.mail {
+		display: inline-block;
+		height: 47px;
+		border-left: 7px solid $body_background;
+		font-family: 'PT Sans', 'sans-serif';
+		font-size: 20px;
+		font-weight: bold;
+		text-decoration: none;
+		color: inherit;
+		padding: 0 20px 0 60px;
+		position: relative;
+		line-height: 60px;
+		transition: color 300ms;
+
+		&::before {
+			content: '';
+			position: absolute;
+			background-size: 20px 20px;
+			width: 20px;
+			height: 20px;
+			left: 20px;
+			top: 20px;
+		}
+	}
+
+	.mail:hover {
+		color: $light_blue;
+	}
+
+	.tel::before {
+		@extend .icon-phone;
+	}
+
+	.mail::before {
+		@extend .icon-mail;
+	}
+
+
 }

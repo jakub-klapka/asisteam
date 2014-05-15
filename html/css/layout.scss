@@ -541,22 +541,49 @@ body:active:after {
 	}
 }
 
+@import "icons/icons-home";
+
 .sidebar_kontakt {
 	@extend %sidebar_sections;
 
 	color: $text_color;
 
-	a {
-		color: inherit;
+	&.tel,
+	&.mail {
+		display: inline-block;
+		height: 47px;
+		font-family: 'PT Sans', 'sans-serif';
+		font-size: 20px;
+		font-weight: bold;
+		text-decoration: none;
+		color: $text_color;
+		padding: 0 20px 0 60px;
+		position: relative;
+		line-height: 47px;
+		transition: color 300ms;
+		clear: right;
 
-		&:hover {
-			text-decoration: none;
+		&::before {
+			content: '';
+			position: absolute;
+			background-size: 20px 20px;
+			width: 20px;
+			height: 20px;
+			left: 20px;
+			top: 13px;
 		}
 	}
 
-	h1,h2,h3 {
-		margin-top: 0;
-		color: $heading_grey;
+	&.mail:hover {
+		color: $light_blue;
+	}
+
+	&.tel::before {
+		@extend .icon-phone;
+	}
+
+	&.mail::before {
+		@extend .icon-mail;
 	}
 }
 

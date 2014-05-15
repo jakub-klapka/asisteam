@@ -54,6 +54,11 @@ module.exports = function(grunt) {
 				src: 'temp/icons.data.svg.css',
 				dest: 'css/icons/_icons-reference.scss'
 			},
+			icon_home: {
+				src: 'temp/icons.data.svg.css',
+				dest: 'css/icons/_icons-home.scss'
+			},
+
 
 			includes: {
 				files: [{
@@ -134,6 +139,14 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'icons/reference',
+					src: ['*.svg'],
+					dest: 'temp/to_process'
+				}]
+			},
+			home_icons: {
+				files: [{
+					expand: true,
+					cwd: 'icons/home',
 					src: ['*.svg'],
 					dest: 'temp/to_process'
 				}]
@@ -260,11 +273,14 @@ module.exports = function(grunt) {
 	grunt.registerTask('js_root_files', ['closureCompiler:root_files']);
 	grunt.registerTask('icon_layout', ['svgmin:layout_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_layout', 'clean:temp']);
 	grunt.registerTask('icon_reference', ['svgmin:reference_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_reference', 'clean:temp']);
+	grunt.registerTask('icon_home', ['svgmin:home_icons', 'grunticon:prepared_from_svgmin', 'copy:icon_home', 'clean:temp']);
 
 
 	// Default task(s).
 	grunt.registerTask('default', [
 		'icon_layout', //have to run before css, as it will be included in css
+		'icon_reference', //have to run before css, as it will be included in css
+		'icon_home', //have to run before css, as it will be included in css
 		'css_all_files',
 		'all_images',
 		'js_root_files',

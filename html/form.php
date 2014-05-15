@@ -453,7 +453,7 @@ if( isset( $_FILES['fotografie'] ) && $_FILES['fotografie']['size'][0] != 0 ) {
 
 }
 
-$mail_send = wp_mail( 'lapak@lumiart.cz', 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
+$mail_send = wp_mail( 'lapak@lumiart.cz, info@asisteam.cz', 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
 
 foreach( $atts as $file ) {
 	unlink( $file );
@@ -468,6 +468,12 @@ foreach( $atts as $file ) {
 <?php endif; ?>
 
 <?php endif; ?>
+
+</article>
+<div class="sidebar_kontakt tel">777 625 397</div>
+<a class="sidebar_kontakt mail email_decode" href="znvygb:vasb@nfvfgrnz.pm">vasb@nfvfgrnz.pm</a>
+</div>
+
 
 @@footer
  
