@@ -1,4 +1,59 @@
 /* global jQuery, Calculator */
+/*************************************/
+/* RPSN kalkulator                   */
+/* (c) 2014 FISCHER SOFTWARE, s.r.o. */
+/* Vsechna prava vyhrazena           */
+/* All right reserved                */
+/*************************************/
+setPPA(12);
+function CalcRate(loanAmount, fee, regularPayment, numberOfPayment) {
+	var p = getVal(loanAmount);
+	var i = getVal(fee);
+	var a = getVal(regularPayment);
+	var n = Math.floor(getVal(numberOfPayment));
+	var f = 0;
+	var x = 1.0001;
+	var fx = 0;
+	var dx = 0;
+	var z = 0;
+	do {
+		fx = i + a * (Math.pow(x, n + 1) - x) / (x - 1) + f * Math.pow(x, n) - p;
+		dx = a * (n * Math.pow(x, n + 1) - (n + 1) * Math.pow(x, n) + 1) / Math.pow(x - 1, 2) + n * f * Math.pow(x, n - 1);
+		z = fx / dx;
+		x = x - z;
+	} while (Math.abs(z) > 1e-9);
+	r = 100 * (Math.pow(1 / x, m) - 1);
+	return TwoDP(r);
+}
+function CalcPayment(loanAmount, interest, numberOfPayment) {
+	var p = getVal(loanAmount);
+	var i = getVal(interest);
+	var n = Math.floor(getVal(numberOfPayment));
+	var q = 1 + (i / 12);
+	return TwoDP(p * (Math.pow(q, n) * (q - 1)) / (Math.pow(q, n) - 1));
+}
+function TwoDP(num) {
+	if (isNaN(num)) num = "0";
+	num = "$" + Math.round(100 * num) / 100;
+	if (num.indexOf(".") == -1) num += ".00";
+	if (num.indexOf(".") == num.length - 2) num += "0";
+	return num.substring(1, num.length);
+}
+function OneDP(num) {
+	if (isNaN(num)) num = "0";
+	num = "$" + Math.round(10 * num) / 10;
+	if (num.indexOf(".") == -1) num += ".0";
+	return num.substring(1, num.length);
+}
+function getVal(x) {
+	x = parseFloat(x);
+	if (isNaN(x)) x = 0;
+	return x;
+}
+function setPPA(x) {
+	m = x;
+}
+
 (function ($) {
 
 	//AJAX calculation
@@ -29,56 +84,15 @@
 
 		updateValues: function () {
 
-			this.spinner(true);
+			var doba_splaceni = this.doba_splaceni.val() * 12,
+				splatka = CalcPayment( this.vyse_uveru.val(), 0.1399, doba_splaceni ),
+				fee = ( this.vyse_uveru.val() <= 200000 ) ? 12500 : this.vyse_uveru.val() * 0.05,
+				rpsn = CalcRate( this.vyse_uveru.val(), fee, splatka, doba_splaceni );
 
-			//Call app
-			this.current_xhr = this.callApp( this.vyse_uveru.val(), this.doba_splaceni.val() );
-
-			//Parse results
-			var t = this;
-			this.current_xhr.success(function( data, response, xhr ){
-				//check, if we are completing last request
-				if( t.current_xhr !== xhr ) {
-					return;
-				}
-
-				if( data.error === true ) {
-					console.log(data.message);
-					t.setNewValues( '---', '---' );
-					t.spinner(false);
-				}
-
-				//All went fine
-				t.setNewValues( data.splatka, data.rpsn );
-				t.spinner(false);
-			});
-
-			this.current_xhr.error(function() {
-				t.setNewValues( '---', '---' );
-				t.spinner(false);
-			});
+			this.setNewValues( splatka, rpsn );
 
 		},
 
-		spinner: function (show) {
-			if( show === true ) {
-				this.section.addClass('loading');
-			} else {
-				this.section.removeClass('loading');
-			}
-		},
-
-		callApp: function( vyse_uveru, doba_splaceni ) {
-
-			return $.ajax({
-				data: {
-					vyse_uveru: vyse_uveru,
-					doba_splaceni: doba_splaceni
-				},
-				dataType: 'json',
-				url: Calculator.handler_url
-			});
-		},
 
 		setNewValues: function( splatka, rpsn ) {
 			var splatka_corrected = splatka.toString().replace( '.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, " ");
