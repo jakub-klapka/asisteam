@@ -1,0 +1,11 @@
+@import "global";
+
+@import "normalize";
+
+@import "typography";
+
+body {
+	@include typography();
+	padding: 15px 43px;
+}
+

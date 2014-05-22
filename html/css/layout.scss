@@ -594,6 +594,7 @@ html {
 }
 body {
 	margin: 0 0 ($footer_height + 30px); /* bottom = footer height */
+	//position: relative;
 }
 
 .main_footer {
@@ -624,4 +625,25 @@ body {
 			text-decoration: none;
 		}
 	}
+}
+
+.lightbox_form {
+	$width: 797px;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	margin-left: -($width/2);
+	background: #FFF;
+	border-top: 7px solid $main_blue;
+	z-index: 20;
+}
+
+.lightbox_overlay {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 10;
+	background: rgba( 0, 0, 0, 0.5 );
 }
