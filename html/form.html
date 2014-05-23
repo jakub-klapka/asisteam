@@ -5,6 +5,7 @@
 	<title>Žádost o úvěr</title>
 
 	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'><!-- http://www.google.com/fonts#UsePlace:use/Collection:PT+Sans:400,700 -->
+	<link rel="stylesheet" href="build/css/layout.css"/>
 	<link rel="stylesheet" href="build/css/lightbox.css"/>
 
 	<script type="text/javascript" src="js/modernizr.js"></script>
@@ -13,85 +14,225 @@
 
 
 <h1>Žádost o úvěr</h1>
-<section class="calcualtor">
+<section class="calculator">
 	<form id="calculator">
-		<label class="select">
-			Výše úvěru:
-			<div class="style_wrap">
-				<select name="vyse_uveru">
-					<option value="100000">100.000 Kč</option>
-					<option value="200000">200.000 Kč</option>
-					<option value="300000">300.000 Kč</option>
-					<option value="400000">400.000 Kč</option>
-					<option value="500000">500.000 Kč</option>
-					<option value="600000">600.000 Kč</option>
-					<option value="700000">700.000 Kč</option>
-					<option value="800000">800.000 Kč</option>
-					<option value="900000">900.000 Kč</option>
-					<option value="1000000">1.000.000 Kč</option>
-					<option value="1100000">1.100.000 Kč</option>
-					<option value="1200000">1.200.000 Kč</option>
-					<option value="1300000">1.300.000 Kč</option>
-					<option value="1400000">1.400.000 Kč</option>
-					<option value="1500000">1.500.000 Kč</option>
-					<option value="1600000">1.600.000 Kč</option>
-					<option value="1700000">1.700.000 Kč</option>
-					<option value="1800000">1.800.000 Kč</option>
-					<option value="1900000">1.900.000 Kč</option>
-					<option value="2000000">2.000.000 Kč</option>
-					<option value="2100000">2.100.000 Kč</option>
-					<option value="2200000">2.200.000 Kč</option>
-					<option value="2300000">2.300.000 Kč</option>
-					<option value="2400000">2.400.000 Kč</option>
-					<option value="2500000">2.500.000 Kč</option>
-					<option value="2600000">2.600.000 Kč</option>
-					<option value="2700000">2.700.000 Kč</option>
-					<option value="2800000">2.800.000 Kč</option>
-					<option value="2900000">2.900.000 Kč</option>
-					<option value="3000000">3.000.000 Kč</option>
-				</select>
+		<div class="left_column">
+			<label class="select">
+				Výše úvěru:
+				<div class="style_wrap">
+					<select name="vyse_uveru">
+						<option value="100000">100.000 Kč</option>
+						<option value="200000">200.000 Kč</option>
+						<option value="300000">300.000 Kč</option>
+						<option value="400000">400.000 Kč</option>
+						<option value="500000">500.000 Kč</option>
+						<option value="600000">600.000 Kč</option>
+						<option value="700000">700.000 Kč</option>
+						<option value="800000">800.000 Kč</option>
+						<option value="900000">900.000 Kč</option>
+						<option value="1000000">1.000.000 Kč</option>
+						<option value="1100000">1.100.000 Kč</option>
+						<option value="1200000">1.200.000 Kč</option>
+						<option value="1300000">1.300.000 Kč</option>
+						<option value="1400000">1.400.000 Kč</option>
+						<option value="1500000">1.500.000 Kč</option>
+						<option value="1600000">1.600.000 Kč</option>
+						<option value="1700000">1.700.000 Kč</option>
+						<option value="1800000">1.800.000 Kč</option>
+						<option value="1900000">1.900.000 Kč</option>
+						<option value="2000000">2.000.000 Kč</option>
+						<option value="2100000">2.100.000 Kč</option>
+						<option value="2200000">2.200.000 Kč</option>
+						<option value="2300000">2.300.000 Kč</option>
+						<option value="2400000">2.400.000 Kč</option>
+						<option value="2500000">2.500.000 Kč</option>
+						<option value="2600000">2.600.000 Kč</option>
+						<option value="2700000">2.700.000 Kč</option>
+						<option value="2800000">2.800.000 Kč</option>
+						<option value="2900000">2.900.000 Kč</option>
+						<option value="3000000">3.000.000 Kč</option>
+					</select>
+				</div>
+			</label>
+			<label class="select">
+				Doba splácení:
+				<div class="style_wrap">
+					<select name="vyse_platby_v_mesicich">
+						<option value="1">1 rok</option>
+						<option value="2">2 roky</option>
+						<option value="3">3 roky</option>
+						<option value="4">4 roky</option>
+						<option value="5">5 let</option>
+						<option value="6">6 let</option>
+						<option value="7">7 let</option>
+						<option value="8">8 let</option>
+						<option value="9">9 let</option>
+						<option value="10" selected="selected">10 let</option>
+						<option value="11">11 let</option>
+						<option value="12">12 let</option>
+						<option value="13">13 let</option>
+						<option value="14">14 let</option>
+						<option value="15">15 let</option>
+						<option value="16">16 let</option>
+						<option value="17">17 let</option>
+						<option value="18">18 let</option>
+						<option value="19">19 let</option>
+						<option value="20">20 let</option>
+					</select>
+				</div>
+			</label>
+			<div class="splatka">
+				Splátka:
+				<div class="box">
+					<strong><span id="calculator_splatka">1 552,06</span> Kč</strong>
+				</div>
 			</div>
-		</label>
-		<label class="select">
-			Doba splácení:
-			<div class="style_wrap">
-				<select name="vyse_platby_v_mesicich">
-					<option value="1">1 rok</option>
-					<option value="2">2 roky</option>
-					<option value="3">3 roky</option>
-					<option value="4">4 roky</option>
-					<option value="5">5 let</option>
-					<option value="6">6 let</option>
-					<option value="7">7 let</option>
-					<option value="8">8 let</option>
-					<option value="9">9 let</option>
-					<option value="10" selected="selected">10 let</option>
-					<option value="11">11 let</option>
-					<option value="12">12 let</option>
-					<option value="13">13 let</option>
-					<option value="14">14 let</option>
-					<option value="15">15 let</option>
-					<option value="16">16 let</option>
-					<option value="17">17 let</option>
-					<option value="18">18 let</option>
-					<option value="19">19 let</option>
-					<option value="20">20 let</option>
-				</select>
+
+			<input type="hidden" name="splatka" id="calc_hidden_splatka" value="1 552,06"/>
+			<input type="hidden" name="rpsn" id="calc_hidden_rpsn" value="18,68%" />
+
+			<label>
+				Jméno:
+				<input type="text" name="jmeno"/>
+			</label>
+			<label>
+				Příjmení:
+				<input type="text" name="prijmeni"/>
+			</label>
+
+			<div class="columns_float">
+				<label>
+					Ulice:
+					<input type="text" name="ulice"/>
+				</label>
+				<label>
+					Č.p.:
+					<input type="text" name="cp"/>
+				</label>
 			</div>
-		</label>
-		<div class="splatka">
-			<strong>Splátka:</strong>
-			<div class="box">
-				<strong><span id="calculator_splatka">1 552,06</span> Kč</strong>
-				úrok 13.99% p.a.
+
+			<div class="columns_float right">
+				<label>
+					PSČ:
+					<input type="text" name="psc"/>
+				</label>
+				<label>
+					Město:
+					<input type="text" name="mesto"/>
+				</label>
 			</div>
+
+			<label>
+				Telefon:
+				<input type="text" name="telefon"/>
+			</label>
+
+			<label>
+				E-mail:
+				<input type="text" name="email"/>
+			</label>
+
+			<label>
+				Poznámka:
+				<textarea name="poznamka" cols="30" rows="10"></textarea>
+			</label>
+
+			<div class="checkbox">
+				<input id="check_osobni" type="checkbox" data-required-checkbox="true" data-osobni-udaje="true" name="checkbox" />
+				<label for="check_osobni"><a href="build/zpracovani-udaju-popup.html" target="_blank" class="open_terms">Souhlasím se zpracováním osobních údajů</a></label>
+			</div>
+
 		</div>
+
+		<div class="right_column">
+			<div class="heading">Údaje o nemovitosti, která bude předmětem zástavy:</div>
+
+			<div class="columns_float">
+				<label>
+					Ulice:
+					<input type="text" name="zastava_ulice"/>
+				</label>
+				<label>
+					Č.p.:
+					<input type="text" name="zastava_cp"/>
+				</label>
+			</div>
+
+			<div class="columns_float right">
+				<label>
+					PSČ:
+					<input type="text" name="zastava_psc"/>
+				</label>
+				<label>
+					Město:
+					<input type="text" name="zastava_mesto"/>
+				</label>
+			</div>
+
+			<label class="select">
+				Druh nemovitosti:
+				<div class="style_wrap">
+					<select name="druh_nemovitosti">
+						<option value="Rodinný dům">Rodinný dům</option>
+						<option value="Byt">Byt</option>
+						<option value="Družstevní byt">Družstevní byt</option>
+						<option value="Pozemek">Pozemek</option>
+						<option value="Komerční objekt">Komerční objekt</option>
+						<option value="Chata">Chata</option>
+						<option value="Jiná">Jiná</option>
+					</select>
+				</div>
+			</label>
+
+			<label>
+				Předpokládaná hodnota nemovitosti:
+				<input type="text" name="predpokladana_hodnota" />
+			</label>
+
+			<label class="captcha">
+				Opište kód z obrázku:
+				<input type="text" name="captcha" />
+			</label>
+
+			<img class="captcha" src="http://placehold.it/100x50" alt=""/>
+
+			<div class="checkbox">
+				<input type="checkbox" name="jsem_vlastnik" id="jsem_vlastnik" />
+				<label for="jsem_vlastnik">Jsem vlastník nemovitosti</label>
+			</div>
+
+			<div class="checkbox">
+				<input type="checkbox" name="exekuce" id="exekuce" />
+				<label for="exekuce">Mám exekuci</label>
+			</div>
+
+			<label>
+				Fotografie nemovitosti:
+				<input type="file" name="fotografie[]" multiple />
+				<small style="font-size: 10px;">(Použijte Shift nebo Ctrl pro vybrání více souborů)</small>
+			</label>
+
+			<button type="submit" class="submit" name="step2_submit">Odeslat</button>
+
+			<ul class="errors">
+				<li>Vyplňte něco</li>
+				<li>Vyplňte něco jiného</li>
+			</ul>
+
+		</div>
+
+
+
 	</form>
 </section>
-
+<script type="text/javascript">
+	var LumiPolyfill = { 'theme_path': 'build/' };
+	var Calculator = { 'handler_url': 'includes/calculator.php' }
+</script>
 <script type="text/javascript" src="js/layout/01_jquery-2.1.0.js"></script>
 <script type="text/javascript" src="js/layout/02_polyfill_init.js"></script>
 <script type="text/javascript" src="js/layout/03_calculator.js"></script>
 <script type="text/javascript" src="js/layout/04_featured_items.js"></script>
+<script type="text/javascript" src="js/layout/05_lightbox_form.js"></script>
 </body>
 </html>

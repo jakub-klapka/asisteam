@@ -9,3 +9,147 @@ body {
 	padding: 15px 43px;
 }
 
+//overwrite
+.calculator {
+	float: none;
+	width: auto;
+	background: none;
+	padding: 0;
+	margin-bottom: 0;
+}
+
+h1 {
+	margin-bottom: 20px;
+}
+
+$columns_top_padding: 30px;
+
+.left_column {
+	width: 50%;
+	float: left;
+	padding-right: 20px;
+	border-right: 1px solid $banner_grey;
+	padding-top: $columns_top_padding;
+}
+
+.right_column {
+	width: 50%;
+	float: right;
+	padding-left: 20px;
+	padding-top: $columns_top_padding;
+	position: relative;
+}
+
+.heading {
+	position: absolute;
+	top: 0;
+	left: 20px;
+	font-weight: bold;
+}
+
+.calculator form {
+	font-size: 12px;
+
+	.select {
+
+		select {
+			padding: 2px 0 2px 5px;
+		}
+	}
+
+	.splatka {
+		font-size: 12px;
+		width: 40%;
+
+		.box {
+			background: $form_select_bg;
+			border: solid 1px $form_select_border;
+			padding-top: 5px;
+			height: 30px;
+
+			strong {
+				font-size: 15px;
+			}
+		}
+	}
+
+	label {
+		display: block;
+		font-size: 12px;
+		clear: both;
+		margin-bottom: 15px;
+
+		input,
+		textarea {
+			display: block;
+			width: 100%;
+			background: $form_select_bg;
+			border: solid 1px $form_select_border;
+			padding: 5px 5px;
+			font-size: 14px;
+			color: $form_select_color;
+			font-weight: bold;
+			transition: border-color 300ms;
+
+			&:focus {
+				outline: none;
+				border-color: $main_blue;
+			}
+		}
+
+		textarea {
+			height: 60px;
+			resize: none;
+		}
+	}
+
+	.columns_float {
+
+		label {
+			clear: none;
+		}
+
+		label:first-child {
+			width: 65%;
+			float: left;
+		}
+
+		label:last-child {
+			width: 30%;
+			float: right;
+		}
+
+		&::after {
+			content: '';
+			display: table;
+			clear: both;
+		}
+
+		&.right {
+			label:first-child {
+				width: 20%;
+			}
+
+			label:last-child {
+				width: 75%;
+			}
+		}
+	}
+
+	label.captcha {
+		float: left;
+		width: 40%;
+		margin-right: 20px;
+	}
+
+	img.captcha {
+		float: left;
+		display: block;
+
+	}
+}
+
+.errors {
+	color: red;
+	font-weight: bold;
+}

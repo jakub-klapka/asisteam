@@ -70,6 +70,15 @@ function setPPA(x) {
 			this.rpsn_el = $('#calculator_rpsn');
 			this.current_xhr = false;
 
+			//hiddens
+			this.hidden_splatka = $('#calc_hidden_splatka');
+			this.hidden_rpsn = $('#calc_hidden_rpsn');
+			this.in_lightbox = ( $('.main_content_wrap').length > 0 ) ? false : true;
+			if( this.in_lightbox === false ) {
+				this.iframe = $('#lightbox iframe');
+				this.iframe_url = this.iframe.data('src');
+			}
+
 			this.bindEvents();
 
 			if( this.form.data('compute-rightaway') == true ) {
@@ -91,6 +100,12 @@ function setPPA(x) {
 
 			this.setNewValues( splatka, rpsn );
 
+			if( this.in_lightbox === false ) {
+				//change url of iframe
+				var new_url = this.iframe_url + '#doba_splaceni=' + this.doba_splaceni.val() + '&vyse_uveru=' + this.vyse_uveru.val();
+				this.iframe.attr('src', new_url);
+			}
+
 		},
 
 
@@ -99,6 +114,15 @@ function setPPA(x) {
 			var rpsn_corrected = rpsn.toString().replace( '.', ',');
 			this.splatka_el.text(splatka_corrected);
 			this.rpsn_el.text(rpsn_corrected);
+
+			//hidden fields
+			if( this.hidden_splatka.length > 0 ) {
+				this.hidden_splatka.val( splatka_corrected );
+			}
+			if( this.hidden_rpsn.length > 0 ) {
+				this.hidden_rpsn.val( rpsn_corrected );
+			}
+
 		}
 
 	};
