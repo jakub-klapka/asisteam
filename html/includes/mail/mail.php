@@ -246,7 +246,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
         // Set Content-Type and charset
         // If we don't have a content-type from the input headers
         if ( !isset( $content_type ) )
-                $content_type = 'text/plain';
+                $content_type = 'text/html';
 
         /**
          * Filter the wp_mail() content type.

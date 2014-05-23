@@ -206,7 +206,7 @@ if( isset( $_POST['submit'] ) ) {
 						<input type="text" name="psc" value="<?php if( isset( $_POST['psc'] ) ) echo $_POST['psc']; ?>" required="required" />
 					</label>
 					<label>
-						Město:
+						Obec:
 						<input type="text" name="mesto" value="<?php if( isset( $_POST['mesto'] ) ) echo $_POST['mesto']; ?>" required="required" />
 					</label>
 				</div>
@@ -253,7 +253,7 @@ if( isset( $_POST['submit'] ) ) {
 						<input type="text" name="zastava_psc" value="<?php if( isset( $_POST['zastava_psc'] ) ) echo $_POST['zastava_psc']; ?>" required="required" />
 					</label>
 					<label>
-						Město:
+						Obec:
 						<input type="text" name="zastava_mesto" value="<?php if( isset( $_POST['zastava_mesto'] ) ) echo $_POST['zastava_mesto']; ?>" required="required" />
 					</label>
 				</div>
@@ -320,35 +320,35 @@ if( isset( $_POST['submit'] ) ) {
 			include_once('mail/mail.php');
 
 			$message = sprintf('
-Odeslána nová žádost z webu asisteam.cz:\n\n
-\n
-Výše úvěru: %s,-Kč\n
-Doba splácení: %s let\n
-Vypočtená splátka: %s Kč/měsíc\n
-Vypočtené RPSN: %s %%\n
-Jméno: %s\n
-Příjmení: %s\n
-Ulice: %s\n
-Č.p.: %s\n
-Město: %s\n
-PSČ: %s\n
-Telefon: %s\n
-E-mail: %s\n
-Poznámka: %s\n
-\n
-Údaje o nemovitosti k zajištění:\n
-Ulice: %s\n
-Č.p: %s\n
-PSČ: %s\n
-Město: %s\n
-Druh nemovitosti: %s\n
-Předpokládaná hodnota nemovitosti: %s\n
-Je vlastník nemovitosti: %s\n
-Je exekuce: %s\n
-Počet fotografií v příloze: %s\n
-\n
-IP Adresa odesílatele: %s\n
-\n
+Odeslána nová žádost z webu asisteam.cz:<br>
+<br>
+Výše úvěru: %s,-Kč<br>
+Doba splácení: %s let<br>
+Vypočtená splátka: %s Kč/měsíc<br>
+Vypočtené RPSN: %s %%<br>
+Jméno: %s<br>
+Příjmení: %s<br>
+Ulice: %s<br>
+Č.p.: %s<br>
+Město: %s<br>
+PSČ: %s<br>
+Telefon: %s<br>
+E-mail: %s<br>
+Poznámka: %s<br>
+<br>
+Údaje o nemovitosti k zajištění:<br>
+Ulice: %s<br>
+Č.p: %s<br>
+PSČ: %s<br>
+Město: %s<br>
+Druh nemovitosti: %s<br>
+Předpokládaná hodnota nemovitosti: %s<br>
+Je vlastník nemovitosti: %s<br>
+Je exekuce: %s<br>
+Počet fotografií v příloze: %s<br>
+<br>
+IP Adresa odesílatele: %s<br>
+<br>
 (Pozn: Uživatel mohl přiložit cokoliv, neotevírejte podezřelé soubory v přílohách!)
 			',
 			$_POST['vyse_uveru'],
@@ -391,7 +391,7 @@ IP Adresa odesílatele: %s\n
 
 			}
 
-			$mail_send = wp_mail( 'lapak@lumiart.cz', 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
+			$mail_send = wp_mail( array( 'lapak@lumiart.cz', 'zadosti@asisteam.cz' ), 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
 
 			foreach( $atts as $file ) {
 			unlink( $file );
