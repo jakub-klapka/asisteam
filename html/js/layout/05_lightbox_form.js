@@ -8,7 +8,12 @@
 			this.form = $('#lightbox');
 			this.overlay = $('#lightbox_overlay');
 
-			this.open_button = $('.main_content_wrap #calculator button[type=submit]');
+			this.open_button = $('.main_content_wrap #calculator button[type=submit], .banner #calculator button[type=submit]');
+
+			$('a[data-close-lightbox]').click(function(evt){
+				evt.preventDefault();
+				parent.LumiLightboxForm.close_lightbox();
+			});
 
 			if( this.open_button.length > 0 ) {
 				//on home page
@@ -62,7 +67,8 @@
 	};
 
 	$(document).ready(function(){
-		LumiLightboxForm.init();
+		window.LumiLightboxForm = LumiLightboxForm;
+		window.LumiLightboxForm.init();
 	});
 
 })(jQuery);

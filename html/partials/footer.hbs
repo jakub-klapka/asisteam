@@ -4,6 +4,12 @@
 		<div class="authors">Tvorba webových stránek: <a href="http://www.marekhorava.cz">Marek Hořava</a> | <a href="http://www.lumiart.cz">Jakub Klapka</a></div>
 	</div>
 </footer>
+
+<div id="lightbox_overlay" class="lightbox_overlay"></div>
+<div id="lightbox" class="lightbox_form">
+	<iframe src="{{abspath}}/form.php" data-src="{{abspath}}/form.php" id="lightbox_form" name="lightbox_form" frameborder="0" width="797" height="830"></iframe>
+</div>
+
 <script type="text/javascript">
 	var LumiPolyfill = { 'theme_path': '{{abspath}}/' };
 	var Calculator = { 'handler_url': '{{abspath}}/calculator.php' };
@@ -11,7 +17,7 @@
 <script type="text/javascript" src="{{abspath}}/js/layout.js?v={{css_js_ver}}"></script>
 <script type="text/javascript" src="{{abspath}}/js/email_decode.js?v={{css_js_ver}}"></script>
 {{#each footer_scripts}}
-	<script type="text/javascript" src="{{../abspath}}/js/{{this}}?v={{css_js_ver}}"></script>
+	<script type="text/javascript" src="{{../abspath}}/js/{{this}}?v={{../css_js_ver}}"></script>
 {{/each}}
 </body>
 </html>

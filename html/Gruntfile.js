@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 
+	var assembly_data = grunt.file.readYAML('data.yml');
 	// Project configuration.
 	grunt.initConfig({
 		sass: {
@@ -226,13 +227,10 @@ module.exports = function(grunt) {
 			options: {
 				patterns: [
 					{
-						match: 'header',
-						replacement: grunt.file.read("build/template.html").match(/([\s\S]+.+role=\"main\")>/ig)[0]
+						match: 'abspath',
+						replacement: assembly_data.abspath
 					},
-					{
-						match: 'footer',
-						replacement: grunt.file.read("build/template.html").match(/(<footer class="main_footer">[\s\S]+)/ig)[0]
-					},
+
 
 				]
 			},
