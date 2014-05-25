@@ -97,8 +97,8 @@ if( isset( $_POST['submit'] ) ) {
 		<?php if( !isset( $_POST['submit'] ) || $error != false ) :
 			include("captcha/simple-php-captcha.php");
 			$_SESSION['captcha'] = simple_php_captcha();
-			$vyse_uveru = ( !empty( $_POST['vyse_uveru'] ) ) ? $_POST['vyse_uveru'] : false;
-			$vyse_platby_v_mesicich = ( !empty( $_POST['vyse_platby_v_mesicich'] ) ) ? $_POST['vyse_platby_v_mesicich'] : 10;
+			$vyse_uveru = ( !empty( $_POST['vyse_uveru'] ) ) ? $_POST['vyse_uveru'] : 250000;
+			$vyse_platby_v_mesicich = ( !empty( $_POST['vyse_platby_v_mesicich'] ) ) ? $_POST['vyse_platby_v_mesicich'] : 20;
 
 			?>
 			<div class="left_column">
@@ -173,12 +173,12 @@ if( isset( $_POST['submit'] ) ) {
 				<div class="splatka">
 					Splátka:
 					<div class="box">
-						<strong><span id="calculator_splatka"><?php if( isset( $_POST['splatka'] ) ) { echo $_POST['splatka']; } else { echo '1 552,06'; } ?></span> Kč</strong>
+						<strong><span id="calculator_splatka"><?php if( isset( $_POST['splatka'] ) ) { echo $_POST['splatka']; } else { echo '2 578,77'; } ?></span> Kč</strong>
 					</div>
 				</div>
 
-				<input type="hidden" name="splatka" id="calc_hidden_splatka" value="<?php if( isset( $_POST['splatka'] ) ) { echo $_POST['splatka']; } else { echo '1 552,06'; } ?>"/>
-				<input type="hidden" name="rpsn" id="calc_hidden_rpsn" value="<?php if( isset( $_POST['rpsn'] ) ) { echo $_POST['rpsn']; } else { echo '19,05'; } ?>" />
+				<input type="hidden" name="splatka" id="calc_hidden_splatka" value="<?php if( isset( $_POST['splatka'] ) ) { echo $_POST['splatka']; } else { echo '2 578,77'; } ?>"/>
+				<input type="hidden" name="rpsn" id="calc_hidden_rpsn" value="<?php if( isset( $_POST['rpsn'] ) ) { echo $_POST['rpsn']; } else { echo '12,44'; } ?>" />
 
 				<label>
 					Jméno:

@@ -94,7 +94,7 @@ function setPPA(x) {
 		updateValues: function () {
 
 			var doba_splaceni = this.doba_splaceni.val() * 12,
-				splatka = CalcPayment( this.vyse_uveru.val(), 0.1399, doba_splaceni ),
+				splatka = CalcPayment( this.vyse_uveru.val(), 0.1099, doba_splaceni ),
 				fee = ( this.vyse_uveru.val() <= 200000 ) ? 12500 : this.vyse_uveru.val() * 0.05,
 				rpsn = CalcRate( this.vyse_uveru.val(), fee, splatka, doba_splaceni );
 
