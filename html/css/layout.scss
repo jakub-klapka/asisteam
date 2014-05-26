@@ -656,4 +656,10 @@ body {
 	cursor: pointer;
 
 	display: none;
+
+	@media screen and (-webkit-min-device-pixel-ratio:0)
+	{
+		.lightboxOverlay { overflow: scroll; }
+		.lightboxOverlay::-webkit-scrollbar { width: 0px; }
+	}
 }

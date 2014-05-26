@@ -391,7 +391,8 @@ IP Adresa odesílatele: %s<br>
 
 			}
 
-			$mail_send = wp_mail( array( 'lapak@lumiart.cz', 'zadosti@asisteam.cz' ), 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
+			$mail_send = wp_mail( array( 'zadosti@asisteam.cz' ), 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
+			//$mail_send = wp_mail( array( 'lapak@lumiart.cz' ), 'Nová žádost z webu asisteam.cz!', $message, '', $atts );
 
 			foreach( $atts as $file ) {
 			unlink( $file );
