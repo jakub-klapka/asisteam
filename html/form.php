@@ -339,7 +339,7 @@ Poznámka: %s<br>
 <br>
 Údaje o nemovitosti k zajištění:<br>
 Ulice: %s<br>
-Č.p: %s<br>
+Č.p.: %s<br>
 PSČ: %s<br>
 Město: %s<br>
 Druh nemovitosti: %s<br>
