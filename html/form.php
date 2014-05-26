@@ -326,6 +326,7 @@ Výše úvěru: %s,-Kč<br>
 Doba splácení: %s let<br>
 Vypočtená splátka: %s Kč/měsíc<br>
 Vypočtené RPSN: %s %%<br>
+Použitá úroková sazba: 10,99%%<br>
 Jméno: %s<br>
 Příjmení: %s<br>
 Ulice: %s<br>
