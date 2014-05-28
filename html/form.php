@@ -404,6 +404,9 @@ IP Adresa odesílatele: %s<br>
 			<?php if( $mail_send == true ) : ?>
 				<span style="color: green">Vaše žádost byla odeslána, budeme vás co nejdříve kontaktovat.</span><br/><br/>
 				<a href="" style="color: #058dd3;" data-close-lightbox>Zavřít</a>
+				<!-- Měřicí kód Sklik.cz -->
+				<iframe width="119" height="22" frameborder="0" scrolling="no"
+			        src="http://c.imedia.cz/checkConversion?c=100004880&color=ffffff&v="></iframe>
 			<?php else : ?>
 				<span style="color: red">Nepodařilo se odeslat žádost, zkuste se vrátit zpět a poslat ji znova, nebo nás kontaktovat jinak. Omlouváme se za potíže.</span>
 				<a href="" style="color: #058dd3;" data-close-lightbox>Zavřít</a>
