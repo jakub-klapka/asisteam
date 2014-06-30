@@ -295,19 +295,6 @@ AddDefaultCharset utf-8
 #    Header set Cache-Control "no-transform"
 # </IfModule>
 
-# ------------------------------------------------------------------------------
-# | ETags                                                                      |
-# ------------------------------------------------------------------------------
-
-# Remove `ETags` as resources are sent with far-future expires headers.
-# http://developer.yahoo.com/performance/rules.html#etags.
-
-# `FileETag None` doesn't work in all cases.
-<IfModule mod_headers.c>
-    Header unset ETag
-</IfModule>
-
-FileETag None
 
 # ------------------------------------------------------------------------------
 # | Expires headers                                                            |
