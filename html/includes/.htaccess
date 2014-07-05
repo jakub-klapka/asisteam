@@ -1,4 +1,4 @@
-Redirect 301 /zprostredkovatel http://85.70.179.27
+Redirect 301 /zprostredkovatel http://31.30.60.79
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
