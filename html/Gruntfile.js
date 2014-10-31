@@ -168,7 +168,7 @@ module.exports = function(grunt) {
 				tasks: ['css_livereload']
 			},
 			assemble: {
-				files: ['layouts/*.*', 'pages/*.*', 'partials/*.*', 'php_pages/*.*'],
+				files: ['layouts/*.*', 'pages/*.*', 'partials/*.*', 'php_pages/*.*', 'sitemap.hbs'],
 				tasks: 'newer:assemble'
 			},
 			includes: {
@@ -182,6 +182,10 @@ module.exports = function(grunt) {
 				files: ['form.php'],
 				tasks: 'replace'
 			},
+			sitemap: {
+				files: ['sitemap.php'],
+				tasks: 'shell:sitemap'
+			},
 			livereload: {
 				options: {
 					livereload: true
@@ -194,7 +198,7 @@ module.exports = function(grunt) {
 				logConcurrentOutput: true,
 				limit: 10
 			},
-			dev: ['watch:css', 'watch:livereload', 'watch:assemble', 'watch:includes', 'watch:form']
+			dev: ['watch:css', 'watch:livereload', 'watch:assemble', 'watch:includes', 'watch:form', 'watch:sitemap']
 		},
 		assemble: {
 			dist: {
@@ -212,15 +216,7 @@ module.exports = function(grunt) {
 					src: '**/*.{md,hbs}',
 					dest: 'build'
 				}]
-			},
-			browserconfig: {
-				options: {
-					data: 'data.yml',
-					ext: '.xml',
-				},
-				src: ['browserconfig.hbs'],
-				dest: 'build'
-			},
+			}
 
 		},
 		replace: {
@@ -238,7 +234,11 @@ module.exports = function(grunt) {
 				src: 'form.php',
 				dest: 'build/form.php'
 			}
-
+		},
+		shell: {
+			sitemap: {
+				command: 'php -f sitemap.php'
+			}
 		}
 	});
 
@@ -260,6 +260,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('assemble' );
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-replace');
+	grunt.loadNpmTasks('grunt-shell');
 
 	//helpers
 	grunt.registerTask('css_all_files', ['sass:all_files', 'autoprefixer:all_files']);
@@ -287,7 +288,8 @@ module.exports = function(grunt) {
 		'js_email_decode',
 		'assemble',
 		'replace',
-		'copy:includes'
+		'copy:includes',
+		'shell:sitemap'
 	]);
 	grunt.registerTask('dev', ['concurrent:dev']);
 
