@@ -3,19 +3,23 @@
  target_id: pujcky_na_cokoliv
  title: Půjčky na cokoliv
  note: k vybavení domácnosti..
+ href: pujcky-ihned-na-cokoliv
 -
  class: flag
  target_id: uvery_pro_podnikatele
  title: Úvěry pro<br>podnikatele
  note: začněte Váš business s námi!
+ href: uvery-pro-podnikatele
 -
  class: home
  target_id: ucelove_pujcky
  title: Účelové půjčky
  note: ke koupi, výstavbě, rekonstrukci
+ href: ucelovy-uver-a-pujcka
 -
  class: chart
  target_id: pujcky_na_cokoliv
  title: Konsolidace
  note: sloučíme drahé půjčky, vyplatíme exekuci
  use_other_target: true
+ href: pujcky-ihned-na-cokoliv
