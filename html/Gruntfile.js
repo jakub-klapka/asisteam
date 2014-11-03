@@ -186,6 +186,11 @@ module.exports = function(grunt) {
 				files: ['sitemap.php'],
 				tasks: 'shell:sitemap'
 			},
+			featured_nav: {
+				files: ['featured_nav.php'],
+				tasks: 'shell:featured_nav'
+			},
+
 			livereload: {
 				options: {
 					livereload: true
@@ -198,7 +203,7 @@ module.exports = function(grunt) {
 				logConcurrentOutput: true,
 				limit: 10
 			},
-			dev: ['watch:css', 'watch:livereload', 'watch:assemble', 'watch:includes', 'watch:form', 'watch:sitemap']
+			dev: ['watch:css', 'watch:livereload', 'watch:assemble', 'watch:includes', 'watch:form', 'watch:sitemap', 'watch:featured_nav',]
 		},
 		assemble: {
 			dist: {
@@ -238,7 +243,11 @@ module.exports = function(grunt) {
 		shell: {
 			sitemap: {
 				command: 'php -f sitemap.php'
-			}
+			},
+			featured_nav: {
+				command: 'php -f featured_nav.php'
+			},
+
 		}
 	});
 
@@ -289,7 +298,8 @@ module.exports = function(grunt) {
 		'assemble',
 		'replace',
 		'copy:includes',
-		'shell:sitemap'
+		'shell:sitemap',
+		'shell:featured_nav'
 	]);
 	grunt.registerTask('dev', ['concurrent:dev']);
 

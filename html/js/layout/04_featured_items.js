@@ -6,11 +6,13 @@
 		init: function () {
 
 			this.anchors = $('.featured_nav a');
-			this.targets = $('.featured_item');
+			this.target = $('.featured_item');
+			this.spinner = $('.featured_nav__loader');
 			this.slide_speed = 500;
+			this.current_el = false;
 
 			this.bindEvents();
-			this.addCloseButton();
+			//this.addCloseButton();
 		},
 
 		bindEvents: function() {
@@ -23,29 +25,55 @@
 
 		clicked: function(el) {
 
-			var cont = this.closeAll(el);
-
-			if( cont === false ) {
+			if( el.is( this.current_el  ) ) {
+				this.current_el = false;
+				this.closeAll();
 				return;
 			}
+			this.current_el = el;
 
-			//open
-			el.addClass('active');
-			this.targets.filter('[data-item=' + el.data('target') + ']').addClass('open').slideDown(this.slide_speed);
+			var closeDefer = $.Deferred();
+			this.closeAll( closeDefer );
+
+			var t = this;
+			closeDefer.done( function () {
+
+				//open
+				el.addClass('active');
+
+				t.spinner.velocity( 'fadeIn', { duration: 200 } );
+
+				var xhr = $.ajax( {
+					dataType: 'json',
+					url: el.data('target')
+				} );
+
+				xhr.done( function( data ) {
+
+					t.spinner.velocity( 'fadeOut', { duration: 200 } );
+					t.target.html( data.data );
+					t.addCloseButton();
+					t.target.velocity( 'slideDown', { duration: 300 } );
+
+				} );
+
+
+			} );
 
 		},
 
-		closeAll: function(el) {
+		closeAll: function( closeDefer ) {
+			closeDefer = closeDefer || $.Deferred();
 
-			//close all open
-			this.targets.filter('.open').removeClass('open').slideUp(this.slide_speed);
-
-			//click on active
-			if( el !== false && el.hasClass('active') ) {
-				this.anchors.filter('.active').removeClass('active');
-				return false;
+			if( !this.target.is( ':visible' ) ) {
+				closeDefer.resolve();
+				return;
 			}
 
+			//close all open
+			this.target.velocity( 'slideUp', { duration: 300, complete: function() {
+				closeDefer.resolve();
+			} } );
 			this.anchors.filter('.active').removeClass('active');
 
 		},
@@ -53,8 +81,12 @@
 		addCloseButton: function() {
 
 			var button = $('<button type="button" class="close">Zavřít</button>');
-			this.targets.append( button );
-			$('button.close').on('click', $.proxy(this.closeAll, this, false));
+			this.target.append( button );
+			var t = this;
+			$('button.close').on('click', function() {
+				t.current_el = false;
+				t.closeAll();
+			});
 
 		}
 	};

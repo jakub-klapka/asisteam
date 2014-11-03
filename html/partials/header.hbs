@@ -61,19 +61,20 @@
 
 	<nav class="featured_nav" role="navigation">
 		{{#each featured_nav}}
-			<a class="{{class}}" data-target="{{target_id}}" href="">
+			<a class="{{class}}" data-target="{{ ../abspath }}/{{target_id}}.json" href="">
 				<strong>{{{title}}}</strong>
 				{{note}}
 			</a>
 		{{/each}}
+		<div class="featured_nav__loader" aria-hidden="true">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
 	</nav>
 
-	{{#each featured_nav}}
-		{{#unless use_other_target}}
-			<div class="featured_item" data-item="{{target_id}}">
-				{{{fn_content}}}
-			</div>
-		{{/unless}}
-	{{/each}}
+	<div class="featured_item">
+
+	</div>
 
 </header>
