@@ -9,11 +9,11 @@
 				ul = li.find( 'ul' );
 
 			li.on( 'mouseenter', function() {
-				ul.velocity( 'fadeIn', { duration: 300 } );
+				ul.velocity('stop').velocity( 'fadeIn', { duration: 300 } );
 			} );
 
 			li.on( 'mouseleave', function() {
-				ul.velocity( 'fadeOut', { duration: 300 } );
+				ul.velocity('stop').velocity( 'fadeOut', { duration: 300 } );
 			} );
 
 		} );

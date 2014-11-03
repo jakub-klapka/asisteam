@@ -2,7 +2,7 @@
 <html lang="cs-CZ">
 <head>
 	<meta charset="UTF-8">
-	<title>AsisTeam{{#if title}} | {{title}}{{/if}}</title>
+	<title>{{#if title}}{{title}} | {{/if}}AsisTeam</title>
 
 	<script type="text/javascript" src="{{abspath}}/js/modernizr.js"></script>
 
@@ -55,16 +55,18 @@
 						<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../../abspath}}/{{basename}}{{../../../htmlext}}">{{data.title}}</a></li>
 					{{/unless}}
 				{{/unless}}
+				{{#is data.menu_position 50 }}
+					<li class="has-submenu"><span class="menu_item_placeholder">Články</span>
+						<ul>
+							{{#withSort ../../pages "data.menu_position"}}
+								{{#if data.submenu}}
+									<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../../../abspath}}/{{basename}}{{../../../../htmlext}}">{{data.title}}</a></li>
+								{{/if}}
+							{{/withSort}}
+						</ul>
+					</li>
+				{{/is}}
 			{{/withSort}}
-			<li class="has-submenu"><span class="menu_item_placeholder">Články</span>
-				<ul>
-					{{#withSort pages "data.menu_position"}}
-						{{#if data.submenu}}
-							<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../abspath}}/{{basename}}{{../../htmlext}}">{{data.title}}</a></li>
-						{{/if}}
-					{{/withSort}}
-				</ul>
-			</li>
 		</ul>
 	</nav>
 
