@@ -75,16 +75,18 @@ body {
 			height: $image_height;
 			line-height: $image_height;
 			margin-left: 20px;
+			position: relative;
 
 			&:first-of-type {
 				margin-left: 0;
 			}
 
-			a {
+			a, .menu_item_placeholder {
 				display: block;
 				height: 100%;
 				padding: 0 10px;
 				position: relative;
+				cursor: pointer;
 
 				text-decoration: none;
 				color: $main_blue;
@@ -107,13 +109,50 @@ body {
 					transition: opacity $transition_timeout;
 				}
 
-				&:hover:before {
-					opacity: 1;
-				}
+			}
+
+			&:hover > a:before,
+			&:hover > .menu_item_placeholder:before,
+			{
+				opacity: 1;
 			}
 
 			&.active a:before {
 				opacity: 1;
+			}
+
+			ul {
+				//submenu
+				position: absolute;
+				left: 50%;
+				top: 100%;
+				right: auto;
+				transform: translateX(-50%);
+				background: $body_background;
+				padding: 10px;
+				border: 1px solid $main_blue;
+
+				height: auto;
+				width: auto;
+				margin-top: 0;
+				z-index: 1000;
+
+				display: none;
+
+				li {
+					display: block;
+					height: auto;
+					line-height: 1.6em;
+					margin-left: 0;
+					position: relative;
+					white-space: nowrap;
+
+					a {
+						&:before {
+							right: 98%;
+						}
+					}
+				}
 			}
 		}
 	}

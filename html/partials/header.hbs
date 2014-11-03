@@ -56,6 +56,15 @@
 					{{/unless}}
 				{{/unless}}
 			{{/withSort}}
+			<li class="has-submenu"><span class="menu_item_placeholder">Články</span>
+				<ul>
+					{{#withSort pages "data.menu_position"}}
+						{{#if data.submenu}}
+							<li{{#if isCurrentPage}} class="active"{{/if}}><a href="{{../../abspath}}/{{basename}}{{../../htmlext}}">{{data.title}}</a></li>
+						{{/if}}
+					{{/withSort}}
+				</ul>
+			</li>
 		</ul>
 	</nav>
 

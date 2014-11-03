@@ -14,7 +14,7 @@
     "grunt-contrib-clean": "0.5.0",
     "grunt-contrib-watch": "0.6.1",
     "grunt-concurrent": "0.5.0",
-    "assemble": "0.4.42",
+    "assemble": "0.4.37",
     "grunt-newer": "0.7.0",
     "grunt-replace": "0.7.7",
     "grunt-contrib-imagemin": "0.7.0",
