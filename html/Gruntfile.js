@@ -221,7 +221,15 @@ module.exports = function(grunt) {
 					src: '**/*.{md,hbs}',
 					dest: 'build'
 				}]
-			}
+			},
+			browserconfig: {
+				options: {
+					data: 'data.yml',
+					ext: '.xml',
+				},
+				src: ['browserconfig.hbs'],
+				dest: 'build'
+			},
 
 		},
 		replace: {
