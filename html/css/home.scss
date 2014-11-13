@@ -1,5 +1,9 @@
 @import "global";
 
+.main_content.home {
+	padding-top: 42px;
+}
+
 .banner {
 	height: $home_slider_height;
 	margin-bottom: 59px + 30px;
