@@ -407,12 +407,35 @@ IP Adresa odesílatele: %s<br>
 			?>
 
 			<?php if( $mail_send == true ) : ?>
+
 				<span style="color: green">Vaše žádost byla odeslána, budeme vás co nejdříve kontaktovat.</span><br/><br/>
 				<a href="" style="color: #058dd3;" data-close-lightbox>Zavřít</a>
 				<!-- Měřicí kód Sklik.cz -->
 				<iframe width="119" height="22" frameborder="0" scrolling="no"
 			        src="http://c.imedia.cz/checkConversion?c=100004880&color=ffffff&v="></iframe>
-			<?php else : ?>
+				<!-- Měřicí kód Sklik.cz -->
+				<iframe width="119" height="22" frameborder="0" scrolling="no"
+			        src="http://c.imedia.cz/checkConversion?c=100012104&color=ffffff&v="></iframe>
+				<!-- Google Code for Po&#382;&aacute;dat o &uacute;v&#283;r Conversion Page -->
+				<script type="text/javascript">
+					/* <![CDATA[ */
+					var google_conversion_id = 947073834;
+					var google_conversion_language = "en";
+					var google_conversion_format = "3";
+					var google_conversion_color = "ffffff";
+					var google_conversion_label = "fDwgCOjvuFwQqubMwwM";
+					var google_remarketing_only = false;
+					/* ]]> */
+				</script>
+				<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+				</script>
+				<noscript>
+					<div style="display:inline;">
+						<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/947073834/?label=fDwgCOjvuFwQqubMwwM&amp;guid=ON&amp;script=0"/>
+					</div>
+				</noscript>
+
+		<?php else : ?>
 				<span style="color: red">Nepodařilo se odeslat žádost, zkuste se vrátit zpět a poslat ji znova, nebo nás kontaktovat jinak. Omlouváme se za potíže.</span>
 				<a href="" style="color: #058dd3;" data-close-lightbox>Zavřít</a>
 			<?php endif; ?>
