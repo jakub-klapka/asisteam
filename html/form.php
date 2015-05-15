@@ -435,6 +435,14 @@ IP Adresa odesílatele: %s<br>
 					</div>
 				</noscript>
 
+				<script>
+					( function(){
+						if( typeof ga === 'function' ) {
+							ga('send', 'event', 'uver_form', 'send_form');
+						}
+					} )();
+				</script>
+
 		<?php else : ?>
 				<span style="color: red">Nepodařilo se odeslat žádost, zkuste se vrátit zpět a poslat ji znova, nebo nás kontaktovat jinak. Omlouváme se za potíže.</span>
 				<a href="" style="color: #058dd3;" data-close-lightbox>Zavřít</a>

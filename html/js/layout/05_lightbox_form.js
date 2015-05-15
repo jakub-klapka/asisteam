@@ -38,6 +38,10 @@
 			evt.preventDefault();
 			this.form.fadeIn(500);
 			this.overlay.fadeIn(500);
+
+			if( typeof ga === 'function' ) {
+				ga('send', 'event', 'uver_form', 'open_form');
+			}
 		},
 
 		close_lightbox: function () {
